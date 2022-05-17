@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html manifest="manifest.appcache">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1">
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'>
+    <meta name='apple-mobile-web-app-title' content='zuknow'>
+    <link rel='apple-touch-startup-image' href='resource/startup.png' media='( device-width: 320px ) and ( device-height: 568px ) and ( -webkit-device-pixel-ratio: 2 )'>  
+    <link rel='apple-touch-icon' href='resource/icon.png'>
+    <link rel='stylesheet' href='../resource/noto.css'>
+    <link rel='stylesheet' href='resource/style.css'>
+
+    <title>zuknow</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo"></div>
+    </header>
+    
+    <main>
+        <div class="cover sys" id="sys" onclick="cmd(1)"><p>システム英単語</p></div>
+        <div class="cover dou" id="dou" onclick="cmd(4)"><p>合格英熟語 300</p></div>
+        <div class="cover kob" id="kob" onclick="cmd(2)"><p>古文単語 315</p></div>
+        <div class="cover mad" id="mad" onclick="cmd(5)"><p>マドンナ古典単語 230</p></div>
+        <div class="cover kan" id="kan" onclick="cmd(3)"><p>新明説漢文</p></div>
+        <div class="cover fe" id="fe" onclick="cmd(6)"><p>基本情報技術者 でる語句200</p></div>
+    </main>
+
+    <section id="menu">
+        <header>
+            <div class="property" onclick="cmd(7)">
+                <div id="cover"></div>
+
+                <div class="title">
+                    <p id="name"></p>
+                    <nav>
+                        <div class="num">
+                            <p>達成数</p>
+                            <p id="correct">---</p>
+                            <p id="all">/ ---</p>
+                        </div>
+                        <div class="rate">
+                            <p>達成率</p>
+                            <p id="rate">---</p>
+                            <p>%</p>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <div class="list h"><div class="list-wrap">
+            <p onclick="start(1)">範囲の選択</p>
+            <div id="list"></div>
+        </div></div>
+    </section>
+    
+    <section id="choice">
+        <header class="question">
+            <div onclick="start(4)">キャンセル</div>
+            <p id="title">範囲の選択</p>
+        </header>
+        
+        <div class="list h">
+            <div class="list-wrap sel float" style="padding: 0 16px;">
+                <select name="select" style="margin: 16px 16px 16px 0">
+                    <option disabled>制限時間を選択</option>
+                    <option selected>なし</option>
+                    <option>10 秒</option>
+                    <option>15 秒</option>
+                    <option>20 秒</option>
+                    <option>25 秒</option>
+                    <option>30 秒</option>
+                </select>
+                <select name="select">
+                    <option disabled>問題数を選択</option>
+                    <option selected>全て</option>
+                    <option>未達成のみ</option>
+                    <option>チェックのみ</option>
+                    <option>5 問</option>
+                    <option>10 問</option>
+                    <option>15 問</option>
+                    <option>20 問</option>
+                    <option>25 問</option>
+                    <option>30 問</option>
+                </select><br>
+            </div>
+
+            <div style="border-bottom: 1px solid #ceced2;"></div>
+
+            <div class="list-wrap sel">
+                <select name="select" id="select">
+                </select><br>
+                <a href="#" onclick="start(-3)">スタート</a>
+            </div>
+
+            <div class="list-wrap sel">
+                <div class="float">
+                    <input id="input1" type="tel"><p>~</p><input id="input2" type="tel">
+                </div>
+                <a href="#" onclick="start(-6)">スタート</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="set">
+        <header class="question">
+            <div onclick="start(5)">キャンセル</div>
+            <p id="title1"></p>
+        </header>
+        
+        <div class="list h">
+            <div class="list-wrap sel float" style="padding: 0 16px;">
+                <select id="time" style="margin: 16px 16px 16px 0">
+                    <option disabled>制限時間を選択</option>
+                    <option selected>なし</option>
+                    <option>10 秒</option>
+                    <option>15 秒</option>
+                    <option>20 秒</option>
+                    <option>25 秒</option>
+                    <option>30 秒</option>
+                </select>
+                <select id="num">
+                    <option disabled>問題数を選択</option>
+                    <option selected>全て</option>
+                    <option>未達成のみ</option>
+                    <option>チェックのみ</option>
+                    <option>5 問</option>
+                    <option>10 問</option>
+                    <option>15 問</option>
+                    <option>20 問</option>
+                    <option>25 問</option>
+                    <option>30 問</option>
+                </select><br>
+            </div>
+        </div>
+
+        <footer>
+            <div class="start" onclick="start(3)">スタート</div onclick="">
+        </footer>
+    </section>
+
+    <section id="main">
+        <header class="question">
+            <div onclick="start(6)">キャンセル</div>
+            <p id="title2"></p>
+            <div id="btn" onclick="change()">スキップ</div>
+        </header>
+
+        <section id="list1" class="wide prev">
+            <div id="bar1" class="bar"></div>
+            <div class="list">
+                <div class="list-wrap l" id="color1" onclick="speech()">
+                    <p id="num1">-</p>
+                    <div id="quest1"></div>
+                    <input type="checkbox" id="checked1" onclick="check( this.checked )" style="display: none">
+                        <label id="check1" for="checked1">
+                            <span style="position: absolute;top: -8px;right: -8px;"><svg width="30" height="30">
+                                <g><path id="mark1" d="m9.28798,14.93603l3.67804,3.71003l7.48401,-7.42005" fill="none" stroke-width="2" style="stroke:#e91e63;stroke-dasharray:50px, 50px; stroke-dashoffset: 0px;"/></g>
+                            </svg></span>
+                        </label>
+                    <p id="status1"></p>
+                </div>
+                <p id="crtans1">解答</p>
+            </div>
+            <div id="answer1">
+            </div>
+        </section>
+
+        <section id="list2" class="wide prev">
+            <div id="bar2" class="bar"></div>
+            <div class="list">
+                <div class="list-wrap l" id="color2"  onclick="speech()">
+                    <p id="num2">-</p>
+                    <div id="quest2"></div>
+                    <input type="checkbox" id="checked2" onclick="check( this.checked )" style="display: none">
+                        <label id="check2" for="checked2">
+                            <span style="position:absolute;top:-8px;right:-8px;"><svg width="30" height="30">
+                                <g><path id="mark2" d="m9.28798,14.93603l3.67804,3.71003l7.48401,-7.42005" fill="none" stroke-width="2" style="stroke:#e91e63;stroke-dasharray:50px, 50px; stroke-dashoffset: 0px;"/></g>
+                            </svg></span>
+                        </label>
+                    <p id="status2"></p>
+                </div>
+                <p id="crtans2">解答</p>
+            </div>
+            <div id="answer2">
+            </div>
+        </section>
+    
+        <section id="result" class="wide">
+            <div class="list"><div class="list-wrap">
+                <p style="padding:16px;text-align:center;">結果</p>
+                <div id="listre"></div>
+            </div></div>
+        </section>
+    </section>
+
+    <iframe id="ifrm" src="http://astrongame.webcrow.jp/post.html" style="display:none"></iframe>
+</body>
+
+<script>
+    var element = document.getElementById( 'main' );
+    var touchStartX, touchMoveX;
+
+    element.addEventListener("touchstart", function( event ) {
+        touchStartX = event.touches[0].pageX;
+        touchMoveX = touchStartX;
+    }, false);
+
+    element.addEventListener("touchmove", function( event) {
+        touchMoveX = event.changedTouches[0].pageX;
+    }, false);
+
+    element.addEventListener("touchend", function( event ) {
+        if ( touchStartX > ( touchMoveX + 50 ) ) {
+            change();
+        }
+    }, false);
+
+    function speech() {
+
+        var msg = new SpeechSynthesisUtterance();
+        msg.lang = 'ja-JP';
+
+        if ( sub == 1 || sub == 4 ) msg.lang = 'en-US';
+
+        msg.text = row2[0];
+        speechSynthesis.speak( msg );
+
+    };
+
+    function check( code ) {
+
+        speechSynthesis.cancel();
+
+        word = row2[0].replace(/\r?\n/g,'');
+
+        ( code ) ? onof = 1 : onof = 0;
+        get_data( '3,' + sub + ',' + word + ',' + onof );
+
+    };
+
+    function get_data( send ) {
+        
+        var ifrm = document.getElementById( 'ifrm' ).contentWindow;
+        ifrm.postMessage( send, 'http://astrongame.webcrow.jp/' );
+
+        window.addEventListener( 'message', function( event ) {
+
+            switch ( dif ) {
+
+                case 0 :
+                    data = event.data.split( ',' );
+
+                    document.getElementById( 'correct' ).innerHTML = data[0];
+                    document.getElementById( 'all' ).innerHTML = '/ ' + data[1];
+                    document.getElementById( 'rate' ).innerHTML = Math.floor( data[0] / data[1] * 100 );
+
+                    var obj = document.getElementById( 'list' );
+                    obj.textContent = null;
+
+                    for ( var i = 3; i < ( data.length - 1 ); i++ ) {
+                        row = data[i].split( '/' );
+
+                        var elementP = document.createElement( 'p' );
+                        elementP.setAttribute( 'onclick', 'start(2,' + ( i - 3 ) + ')' );
+                        elementP.innerHTML = row[0];
+                        obj.appendChild( elementP );
+
+                        var elementSpan = document.createElement( 'span' );
+                        elementSpan.innerHTML = row[1] + ' / ' + row[2];
+                        elementP.appendChild( elementSpan );
+                    }
+
+                    break;
+
+                case 1 :
+                    data2 = event.data.split( '@' );
+                    add = 0;
+                    dif = 2;
+
+                    document.getElementById( 'result' ).className = 'wide prev';
+                    document.getElementById( 'btn' ).setAttribute( 'onclick', 'change()');
+                    document.getElementById( 'listre' ).textContent = null;
+
+                    limit = data2.length - 1;
+                    if ( valNum > 3 ) limit = ( valNum - 3 ) * 5;
+
+                    change();
+
+                    break;
+
+              }
+
+        }, false );
+
+    };
+    
+    function cmd( code ) {
+
+        var name = document.getElementById( 'name' );
+
+        dif = 0;
+        sub = code;
+        
+        var objQuest1 = document.getElementById( 'quest1' );
+        var objQuest2 = document.getElementById( 'quest2' );
+
+        objQuest1.style.fontSize = '24px';
+        objQuest2.style.fontSize = '24px';
+
+        var opt = [ '全て' ], all = [];
+
+        switch ( sub ) {
+
+            case 1 :
+                document.getElementById( 'cover' ).className = 'sys';
+                name.innerHTML = 'システム英単語';
+
+                objQuest1.style.fontSize = '40px';
+                objQuest2.style.fontSize = '40px';
+
+                opt.push( '1章 Basic Stage', '2章 Essential Stage', '3章 Advanced Stage', '4章 Final Stage', '5章 多義語 Brush Up' );
+                all.push( 2464, 600, 600, 485, 336, 443 );
+                break;
+
+            case 4 :
+                document.getElementById( 'cover' ).className = 'dou';
+                name.innerHTML = '合格英熟語 300';
+
+                opt.push( '今日から即役に立つ 100 熟語', '実力アップを約束する 100 熟語', '志望校合格へ導く 100 熟語' );
+                all.push( 300, 100, 100, 100 );
+                break;
+
+            case 2 :
+                document.getElementById( 'cover' ).className = 'kob';
+                name.innerHTML = '古文単語315';
+
+                opt.push( '1章', '2章', '敬語の章' );
+                all.push( 315, 163, 126, 26 );
+                break;
+
+            case 5 :
+                document.getElementById( 'cover' ).className = 'mad';
+                name.innerHTML = 'マドンナ古典単語';
+                all.push( 231 );
+                break;
+
+            case 3 :
+                document.getElementById( 'cover' ).className = 'kan';
+                name.innerHTML = '新明説漢文';
+                all.push( 86 );
+                break;
+
+            case 6 :
+                document.getElementById( 'cover' ).className = 'fe';
+                name.innerHTML = '基本情報技術者 でる語句200';
+                all.push( 200 );
+                break;
+
+        }
+
+        var element = document.getElementById( 'menu' );
+
+        if ( code < 7 ) {
+
+            element.className = 'open';
+
+            var elementSelect = document.getElementById( 'select' );
+            elementSelect.textContent = null;
+
+            for ( var i = 0; i < opt.length; i++ ) {
+
+                var elementOption = document.createElement( 'option' );
+                elementOption.innerHTML = opt[i];
+
+                elementSelect.appendChild( elementOption );
+
+            }
+
+            get_data( '0,' + sub );
+
+        } else {
+
+            element.className = 'close';
+
+        }
+
+    };
+
+    function start( toggle, num, sel ) {
+
+        dif = 1;
+
+        if ( toggle < 0 ) title[0] = "選択された範囲";
+        
+        switch ( toggle % 3  ) {
+
+            case 1 :
+                var element = document.getElementById( 'choice' );
+                break;
+
+            case 2 :
+                var element = document.getElementById( 'set' );
+                break;
+
+            case 0 :
+                var element = document.getElementById( 'main' );
+                document.getElementById( 'title2' ).innerHTML = title[0];
+
+                var comTime = document.getElementById('time');
+                valTime = comTime.selectedIndex;
+
+                var comNum = document.getElementById('num');
+                valNum = comNum.selectedIndex;
+
+                break;
+
+        }
+
+        ( toggle < 4 ) ? element.className = 'open' : element.className = 'close';
+
+        if ( toggle == 2 ) {
+
+            cnt = 1;
+
+            for (var i = 0; i < num ; i++) {
+                var row = data[i+3].split( '/' );
+                cnt = cnt + ( row[2] - 0 );
+            };
+
+            var row = data[num+3].split( '/' );
+            quest = row[2];
+
+            title = data[ num + 3 ].split( '/' );
+            document.getElementById( 'title1' ).innerHTML = title[0];
+
+        }
+
+        if ( toggle == -6 ) {
+
+            var input1 = document.getElementById("input1").value - 0;
+            var input2 = document.getElementById("input2").value - 0;
+
+            quest = ( input2 - input1 );
+
+            if ( quest < 5 ) {
+
+                element.className = '';
+                alert( '5問以上選択してください。' );
+
+            } else {
+
+                get_data( '1,' + sub + ',' + input1 + ',' + quest );
+
+            }
+
+        }
+
+        if ( toggle == 3 ) get_data( '1,' + sub + ',' + cnt + ',' + quest + ',' + valNum );
+
+        if ( toggle == 6 ) {
+            dif = 0;
+            get_data( '0,' + sub );
+        }
+    };
+
+    function answer( code ) {
+
+        if ( right ) {
+
+            if ( valTime != 1 ) objBar.style.animationPlayState = 'paused';
+
+            right = 0;
+            document.getElementById( 'btn' ).innerHTML = '次へ';
+            
+            var result = '×';
+            var color = '#e91e63';
+
+            if ( numAnswer == code ) {
+                var color = '#43e97b';
+                var name = 'wide next';
+                var status = '正解';
+                var result = '○';
+
+                word = row2[0].replace(/\r?\n/g,'');
+                if ( row2[2] == '0' ) get_data( '2,' + sub + ',' + word );
+            } else {
+                var name = 'wide shake';
+                var status = '不正解';
+            }
+
+            var arr = ['2', '1'];
+            if ( add % 2 ) var arr = ['1', '2'];
+
+            var objResult = document.getElementById( 'listre' );
+            var elementP = document.createElement( 'p' );
+            elementP.innerHTML = row2[0] + '<br>' + row2[1];
+            objResult.appendChild( elementP );
+
+            var elementSpan = document.createElement( 'span' );
+            elementSpan.innerHTML = result;
+            elementSpan.style.color = color;
+            elementP.appendChild( elementSpan );
+
+            objColor.style.background = color;
+            objNumber.style.color = '#fff';
+            objQuest.style.color = '#fff';
+            objLabel.style.border = '1px solid #fff';
+            objMark.style.stroke = '#fff';
+            objCorrect.className = 'show';
+            objNext.className = name;
+            objStatus.innerHTML = status;
+
+        }
+
+    };
+
+    function change() {
+
+        var arr = ['1', '2'];
+        if ( add % 2 ) var arr = ['2', '1'];
+
+        objColor = document.getElementById( 'color' + arr[0] );
+        objNumber = document.getElementById( 'num' + arr[0] );
+        objQuest = document.getElementById( 'quest' + arr[0] );
+        objLabel = document.getElementById( 'check' + arr[0] );
+        objCheck = document.getElementById( 'checked' + arr[0] );
+        objMark = document.getElementById( 'mark' + arr[0] );
+        objStatus = document.getElementById( 'status' + arr[0] );
+        objCorrect = document.getElementById( 'crtans' + arr[0] );
+        objAnswer = document.getElementById( 'answer' + arr[0] );
+        objBar = document.getElementById( 'bar' + arr[0] );
+        objNext = document.getElementById( 'list' + arr[0] );
+        objPrev = document.getElementById( 'list' + arr[1] );
+        objButton = document.getElementById( 'btn' );
+
+        objColor.style.background = '#fff';
+        objNumber.style.color = '#888';
+        objQuest.style.color = '#000';
+        objLabel.style.border = '1px solid #888';
+        objCheck.checked = false;
+        objMark.style.stroke = '#e91e63';
+        objCorrect.className = '';
+        objStatus.innerHTML = '';
+        objAnswer.textContent = null;
+
+        var shuffle = FY( limit );
+        var correct = FY( 4 );
+
+        var j = 0;
+        row2 = data2[add].split( '^' );
+
+        if ( row2[3] == '1' ) objCheck.checked = true;
+
+        for ( var i = 0; i < 4; i++ ) {
+
+            if ( correct[i] == 0 ) {
+                q = row2;
+                numAnswer = i;
+            }  else {
+                if ( data2[shuffle[i]] == data2[add] ) j++
+                q = data2[shuffle[i+j]].split( '^' );
+            }
+
+            var elementP = document.createElement( 'p' );
+            elementP.setAttribute( 'onclick', 'answer(' + i + ')');
+            elementP.innerHTML = q[1];
+
+            objAnswer.appendChild( elementP );
+
+        }
+
+        add++;
+        if ( add > limit ) {
+
+            objButton.innerHTML = 'もう一度';
+            objButton.setAttribute( 'onclick', 'start(6)');
+
+            var element = document.getElementById( 'result' );
+            element.className = 'wide next';
+            objPrev.className = 'wide prev';
+
+        } else {
+
+            if ( valTime != 1 ) {
+
+                objBar.style.opacity = '1';
+                objBar.style.animationDuration = '' + ( ( valTime - 1 ) * 5 + 5 ) + 's';
+                objBar.style.animationPlayState = 'running';
+
+                objBar.addEventListener( 'webkitAnimationEnd', function() {
+                    answer( -1 );
+                }, false );
+
+            } else {
+
+                objBar.style.opacity = '0';
+
+            }
+
+            objButton.innerHTML = 'スキップ';
+            objNumber.innerHTML = add;
+            objQuest.innerHTML = row2[0];
+            objCorrect.innerHTML = row2[1];
+            objNext.className = 'wide next';
+            objPrev.className = 'wide prev';
+            right = 1;
+
+            speech();
+
+        }
+
+    }
+
+    function FY( code ) {
+
+        arr = new Array();
+        for ( var i = 0; i < code; i++ ) arr[i] = i;
+
+        for( var i = code - 1; i > 0; i-- ) {
+            var j = Math.floor( Math.random() * (i + 1 ) );
+            var tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+        }
+
+        return arr
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,172 @@
+.dark {
+    background: #282a2f !important;
+}
+
+/*白*/
+.dark .back p,
+.dark #info,
+.dark .list p,
+.dark .property .title,
+.dark #record .title,
+.dark #record .sample,
+.dark #bar p,
+.dark #xaxis p,
+.dark #title, 
+.dark #title1, 
+.dark #title2,
+.dark #answer3,
+.dark #answer4,
+.dark #explain1,
+.dark #explain2,
+.dark .explain,
+.dark .dialog-bac,
+.dark .welcom,
+.dark #slide p,
+.dark .switch-field label {
+    color: #fff;!important
+}
+
+.dark #answer1 p, 
+.dark #answer2 p {
+    color: #fff;
+    border-top: 1px solid #676767;
+}
+
+.dark select, .dark input, .dark textarea,
+.dark select:disabled, .dark input:disabled, .dark textarea:disabled {
+    background: transparent;
+    color: #fff !important;
+}
+
+.dark .clear:before,
+.dark .clear:after {
+    background: #fff;
+}
+.dark input:focus ~ .clear {
+    opacity: .5;
+}
+
+.dark #slide svg {
+    fill: #fff;
+}
+
+/*濃い灰色*/
+.dark .back,
+.dark .dialog-bac,
+.dark .dialog-bac2,
+.dark .color-title {
+    background: #4c4e54;
+}
+
+.dark header,
+.dark section,
+.dark footer,
+.dark #slider {
+    background: #4c4e5433;
+}
+
+.dark .clear:before,
+.dark .clear:after {
+    background: #4c4e54;
+}
+.dark .clear span {
+    background: #fff;
+}
+
+.dark section {
+    -webkit-backdrop-filter: blur( 15px );
+    backdrop-filter: blur( 15px );
+}
+
+.dark #slider:before {
+    border-bottom-color: #4c4e5466;
+}
+
+ .dark header {
+    box-shadow: 0 16px 32px #00000066;
+}
+
+.dark .list-wrap {
+    background: #55575e;
+}
+
+/*赤*/
+.dark .question div,
+.dark #more,
+.dark .csv,
+.dark .num p:nth-child(2), 
+.dark .rate p:nth-child(2),
+.dark .back nav p:nth-child(2),
+.dark .score div:nth-child(4),
+.dark .score div:nth-child(5),
+.dark .score div:nth-child(6),
+.dark #all-cor, .dark #all-rate,
+.dark a, .dark a:link, .dark a:visited {
+    color: #f13069;
+}
+
+.dark #remain,
+.dark #start,
+.dark .down-button,
+.dark .switch-field input:checked + label {
+    background: #f13069;
+}
+
+.dark .switch-field label:active {
+    background-color: #f130694d;
+}
+
+.dark #arrow {
+    border-color: #f13069;
+}
+
+.dark .switch-field label {
+        box-shadow: 0 0 0 1px #f13069 inset;
+}
+
+.dark #line line,
+.dark #check1 path,
+.dark #check2 path,
+.dark #check3 path {
+    stroke: #f13069;
+}
+
+/*オレンジ*/
+.dark #bar span {
+    background: linear-gradient( #fc6773, #fa9276 );
+}
+.dark #record .sample b:nth-child(1) {
+    color: #fc6773cc;
+}
+.dark #record .sample b:nth-child(2) {
+    color: #f82e6a;
+}
+
+/*薄い灰色*/
+.dark .num p:nth-child(1),
+.dark .rate p:nth-child(1),
+.dark .num p:nth-child(3),
+.dark .rate p:nth-child(3),
+.dark .score div:nth-child(1),
+.dark .score div:nth-child(2),
+.dark .score div:nth-child(3),
+.dark .list span {
+    color: #979799;
+}
+
+.dark #list p:active, 
+.dark #word p:active,
+.dark #listre p:active,
+.dark #xaxis p:active,
+.dark #slide p:active,
+.dark #all-wrap:active {
+    background: #fff2;
+}
+
+.dark .on2 {
+    background: #00000066;
+
+}
+.dark .split {
+    stroke: #fff3;
+}

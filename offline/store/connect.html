@@ -1,0 +1,22 @@
+ <script>
+    window.addEventListener( 'message', function( event ) {
+        
+        var xhr = new XMLHttpRequest();
+
+        xhr.open( 'POST', 'http://astrongame.webcrow.jp/server.php', true );
+        xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+        xhr.send( 'data=' + event.data );
+
+        xhr.onreadystatechange = function() {
+
+            if ( xhr.readyState == 4 && xhr.status == 200 ) {
+
+                var data = xhr.responseText;
+                event.source.postMessage( data, event.origin );
+
+            }
+            
+        };
+
+    }, false );
+</script>

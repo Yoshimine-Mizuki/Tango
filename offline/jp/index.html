@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html manifest="mani.appcache">
+
+<head lang="ja">
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1">
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'>
+    <meta name='apple-mobile-web-app-title' content="Seventeen's">
+    <link rel='apple-touch-startup-image' href='resource/startup.png' media='( device-width: 320px ) and ( device-height: 568px ) and ( -webkit-device-pixel-ratio: 2 )'>  
+    <link rel='apple-touch-icon' href='resource/icon.jpg'>
+    <link rel='stylesheet' href='resource/noto.css'>
+    <link rel='stylesheet' href='resource/style.css'>
+    <link rel='stylesheet' href='resource/theme.css'>
+
+    <title>Seventeen's</title>
+</head>
+
+<body id="body" onload="dif=2;getData(4,0)" ontouchend>
+
+    <input type="checkbox" class="btn" id="checked" onclick="slideMenu( this.checked )">
+    <label id="menu-btn" for="checked">
+        <span class="hum top"></span>
+        <span class="hum middle"></span>
+        <span class="hum bottom"></span>
+    </label>
+
+    <section id="main">
+        <header class="question">
+            <div onclick="start(6)">キャンセル</div>
+            <p id="title2"></p>
+            <div id="btn" onclick="change()">スキップ</div>
+        </header>
+
+        <section id="list1" class="wide prev">
+            <div id="bar1" class="bar"></div>
+            <div class="list">
+                <div class="list-wrap l" id="color1" onclick="speech()">
+                    <p id="cnt1">-</p>
+                    <div id="quest1"></div>
+                    <form class="text" id="text1" action="/">
+                        <input id="input1" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" onkeypress="onkey()">
+                        <span class="barr"></span>
+                    </form>
+
+                    <div id="font1" onclick="slider()">
+                        <svg width="18" height="18" viewBox="0 0 24 24">
+                            <path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12.75 4h-1.5L6.5 15h2.1l.9-2.2zM12 5.98L13.87 11h-3.74L12 5.98z"/>
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                        </svg>
+                    </div>
+                    <input type="checkbox" id="checked1" onclick="mark( this.checked )" style="display:none">
+                    <label id="check1" for="checked1">
+                        <span style="position: absolute;top: -8px;right: -8px"><svg width="30" height="30">
+                            <g><path id="mark1" d="m9.28798,14.93603l3.67804,3.71003l7.48401,-7.42005"/></g>
+                        </svg></span>
+                    </label>
+                    <p id="status1"></p>
+                </div>
+                <p id="crtans1">解答</p>
+            </div>
+            <div id="answer1">
+            </div>
+        </section>
+
+        <section id="list2" class="wide prev">
+            <div id="bar2" class="bar"></div>
+            <div class="list">
+                <div class="list-wrap l" id="color2"  onclick="speech()">
+                    <p id="cnt2">-</p>
+                    <div id="quest2"></div>
+                    <form class="text" id="text2" action="/">
+                        <input id="input2" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" onkeypress="onkey()">
+                        <span class="barr"></span>
+                    </form>
+
+                    <div id="font2" onclick="slider()">
+                        <svg width="18" height="18" viewBox="0 0 24 24">
+                            <path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12.75 4h-1.5L6.5 15h2.1l.9-2.2zM12 5.98L13.87 11h-3.74L12 5.98z"/>
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                        </svg>
+                    </div>
+                    <input type="checkbox" id="checked2" onclick="mark( this.checked )" style="display:none">
+                    <label id="check2" for="checked2">
+                        <span style="position:absolute;top:-8px;right:-8px"><svg width="30" height="30">
+                            <g><path id="mark2" d="m9.28798,14.93603l3.67804,3.71003l7.48401,-7.42005"/></g>
+                        </svg></span>
+                    </label>
+                    <p id="status2"></p>
+                </div>
+                <p id="crtans2">解答</p>
+            </div>
+            <div id="answer2">
+            </div>
+        </section>
+
+        <div id="slider"><input id="range" class="range" type="range" min="14" max="72" value="18" oninput="slider(this.value)"></div>
+    
+        <section id="result">
+            <div class="list"><div class="list-wrap">
+                <p style="padding:16px;text-align:center;">成績</p>
+                <nav class="score">
+                    <div>正解数</div>
+                    <div>正解率</div>
+                    <div>所要時間</div>
+                    <div id="recorrect"></div>
+                    <div id="rerate"></div>
+                    <div id="retime"></div>
+                    <div id="reall"></div>
+                    <div>%</div>
+                </nav>
+                <div class="pause">
+                    <a onclick="start(3)" id="again">もう一度</a>
+                    <a onclick="start(9)" id="miss">間違いなおし</a>
+                </div>
+                <div id="listre"></div>
+            </div></div>
+        </section>
+
+        <div class="back-bar" onclick="start(6)"></div>
+    </section>
+
+    <section id="set">
+        <header class="question">
+            <div onclick="start(5)">キャンセル</div>
+            <p id="title1"></p>
+        </header>
+        
+        <div class="list i">
+            <div class="list-wrap sel con">
+                <p class="big1">設定</p>
+                <select id="time2">
+                    <option disabled>制限時間を選択</option>
+                    <option selected>なし</option>
+                    <option>10 秒</option>
+                    <option>15 秒</option>
+                    <option>20 秒</option>
+                    <option>25 秒</option>
+                    <option>30 秒</option>
+                </select>
+                <select id="num2">
+                </select>
+                <select id="method2">
+                    <option disabled>出題方法を選択</option>
+                    <option selected>全て</option>
+                    <option>未達成のみ</option>
+                    <option>チェックのみ</option>
+                    <option>苦手のみ</option>
+                </select>
+                <select class="big2" id="mode2">
+                    <option disabled>学習モードを選択</option>
+                    <option selected>四択問題</option>
+                    <option>カード一覧</option>
+                    <option>スペルチェック</option>
+                </select>
+                <select id="reverse2">
+                    <option disabled>出題形式を選択</option>
+                    <option selected>単語を出題</option>
+                    <option>意味を出題</option>
+                </select>
+            </div>
+
+            <div style="border-bottom: 1px solid #ceced2;"></div>
+
+            <div id="info"></div>
+
+            <div id="word" class="list-wrap">
+            </div>
+
+            <div class="list-wrap">
+                <a id="export" onclick="csvSave()">CSV ファイルにエクスポート</a>
+            </div>
+        </div>
+
+        <footer>
+            <div id="start" onclick="start(3)">スタート</div>
+        </footer>
+
+        <div class="back-bar" onclick="start(5)"></div>
+    </section>
+
+    <section id="menu">
+        <header>
+            <div class="property" onclick="cmd(0)">
+                <div id="cover"></div>
+
+                <div class="title">
+                    <p id="name"></p>
+                    <nav>
+                        <div class="num">
+                            <p>達成数</p>
+                            <p id="correct"></p>
+                            <p id="all"></p>
+                        </div>
+                        <div class="rate">
+                            <p>達成率</p>
+                            <p id="rate"></p>
+                            <p>%</p>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <div id="record">
+                <p class="title">アクティビティ</p>
+                <p class="sample"><b>■</b> 問題数<b>―</b> 時間</p>
+                
+                <div id="graph" class="graph">
+                    <div>
+                        <svg id="" width="100%" height="100%">
+                            <line x1="0%" y1="17px" x2="100%" y2="17px" class="split" />
+                            <line x1="0%" y1="49px" x2="100%" y2="49px" class="split" />
+                            <line x1="0%" y1="81px" x2="100%" y2="81px" class="split" />
+                            <line x1="0%" y1="113px" x2="100%" y2="113px" class="split" />
+                            <line x1="0%" y1="145px" x2="100%" y2="145px" class="split" />
+                        </svg>
+                    </div>
+                    <span id="figure" style="display:block;transform: translateX(0px);">
+                        <span id="bar"></span>
+                        <span class="line"><svg id="line" width="100%" height="100%"></svg></span>
+                        <span id="xaxis"></span>
+                    </span>
+                    <span id="detail" class="detail">
+                        <p id="date">0000 / 00 / 00</p>
+                        <nav>
+                            <span class="num">
+                                <p class="white">問題数</p>
+                                <p id="num-qu">100</p>
+                            </span>
+                            <span class="rate">
+                                <p class="white">時間</p>
+                                <p id="time">24:48</p>
+                            </span>
+                        </nav>
+                        <p id="close" onclick="detail()">とじる</p>
+                    </span>
+                </div>
+
+                <div id="remain" onclick="goal()">目標</div>
+            </div>
+
+            <div id="more" onclick="more()">ひらく</div>
+            <span id="arrow"></span>
+        </header>
+
+        <div class="list h"><div id="list" class="list-wrap">
+        </div></div>
+
+        <div class="back-bar" onclick="cmd(0)"></div>
+    </section>
+
+    <main id="sub">
+        <div id="loader">
+            <svg class="circular">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"></circle>
+            </svg>
+        </div>
+    </main>
+
+    <div id="slide">
+        <p class="icon" onclick="dark()"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.06 7 9.54 0 4.48-2.94 8.27-7 9.54.95.3 1.95.46 3 .46 5.52 0 10-4.48 10-10S14.52 2 9 2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>ナイトモード
+        <span id="swich">OFF</span></p>
+        <p class="icon" onclick="store(1)"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z"/><path d="M0 0h24v24H0z" fill="none"/></svg>ストア</p>
+        <p class="icon" onclick="store(2)"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M2.53 19.65l1.34.56v-9.03l-2.43 5.86c-.41 1.02.08 2.19 1.09 2.61zm19.5-3.7L17.07 3.98c-.31-.75-1.04-1.21-1.81-1.23-.26 0-.53.04-.79.15L7.1 5.95c-.75.31-1.21 1.03-1.23 1.8-.01.27.04.54.15.8l4.96 11.97c.31.76 1.05 1.22 1.83 1.23.26 0 .52-.05.77-.15l7.36-3.05c1.02-.42 1.51-1.59 1.09-2.6zM7.88 8.75c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-2 11c0 1.1.9 2 2 2h1.45l-3.45-8.34v6.34z"/><path d="M0 0h24v24H0z" fill="none"/></svg>テーマ</p>
+        <p class="icon" onclick="store(3)"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M18 17H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V7h12v2zM3 22l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20z"/><path d="M0 0h24v24H0z" fill="none"/></svg>クレジット</p>
+    </div>
+    
+    <section id="choice">
+        <header class="question">
+            <div onclick="start(4)">キャンセル</div>
+            <p id="title">範囲の選択</p>
+        </header>
+        
+        <div class="list">
+            <div class="list-wrap sel con">
+                <p class="big1">設定</p>
+                <select id="time1">
+                    <option disabled>制限時間を選択</option>
+                    <option selected>なし</option>
+                    <option>10 秒</option>
+                    <option>15 秒</option>
+                    <option>20 秒</option>
+                    <option>25 秒</option>
+                    <option>30 秒</option>
+                </select>
+                <select id="num1">
+                    <option disabled>問題数を選択</option>
+                    <option selected>全て</option>
+                    <option>5 問</option>
+                    <option>10 問</option>
+                    <option>15 問</option>
+                    <option>20 問</option>
+                    <option>25 問</option>
+                    <option>30 問</option>
+                </select>
+                <select id="method1">
+                    <option disabled>出題方法を選択</option>
+                    <option selected>全て</option>
+                    <option>未達成のみ</option>
+                    <option>チェックのみ</option>
+                    <option>苦手のみ</option>
+                </select>
+                <select class="big2" id="mode1">
+                    <option disabled>学習モードを選択</option>
+                    <option selected>四択問題</option>
+                    <option>カード一覧</option>
+                    <option>スペルチェック</option>
+                </select>
+                <select id="reverse1">
+                    <option disabled>出題を選択</option>
+                    <option selected>なし</option>
+                    <option>入れ替え</option>
+                </select>
+            </div>
+
+            <div style="border-bottom: 1px solid #ceced2;"></div>
+
+            <div class="list-wrap sel">
+                <div class="float">
+                    <input id="input3" type="tel"><p>~</p><input id="input4" type="tel">
+                </div>
+                <a href="#" onclick="start(-6)">スタート</a>
+            </div>
+            <div class="list-wrap sel">
+                <select id="wrgSelect">
+                </select>
+                <div class="option">
+                    <a onclick="menu(2)">削除</a>
+                    <a onclick="start(-3)">スタート</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-bar" onclick="start(4)"></div>
+    </section>
+
+    <section id="store">
+        <header class="question">
+            <div onclick="store(1)">キャンセル</div>
+            <p id="title">ストア</p>
+        </header>
+        
+        <div class="list i" style="height: calc( 100vh - 56px );">
+            <div class="back st ribbon">
+                <p>英単語</p><p>単語数 : 15</p>
+                <div class="down-button" onclick="sample(1)">ダウンロード</div>
+            </div>
+            <div class="cover" style="background: url(http://app.tango-card.cf/resource/eng.jpg) 0% 0% / cover no-repeat;"></div>
+            <div class="back st ribbon">
+                <p>古典</p><p>単語数 : 15</p>
+                <div class="down-button" onclick="sample(2)">ダウンロード</div>
+            </div>
+            <div class="cover" style="background: url(http://app.tango-card.cf/resource/cls.jpg) 0% 0% / cover no-repeat;"></div>
+            <div class="back st ribbon">
+                <p>化学</p><p>単語数 : 15</p>
+                <div class="down-button" onclick="sample(3)">ダウンロード</div>
+            </div>
+            <div class="cover" style="background: url(http://app.tango-card.cf/resource/che.jpg) 0% 0% / cover no-repeat;"></div>
+        </div>
+    </section>
+
+    <section id="theme" >
+        <header class="question">
+            <div onclick="store(2)">キャンセル</div>
+            <p id="title">テーマ</p>
+        </header>
+        
+        <div class="list i" style="height: calc( 100vh - 56px );">
+            <div class="switch-field">
+                <input type="radio" id="switch_left" name="switch" checked/>
+                <label for="switch_left">デイ</label>
+                <input type="radio" id="switch_right" name="switch"/>
+                <label for="switch_right">ナイト</label>
+            </div>
+            <div class="color-field">
+                <div class="color-wrap" onclick="color(0)">
+                    <div class="color" style="background:linear-gradient( 135deg, #d6eeff, #83a0af )"></div><p class="color-title">デフォルト</p>
+                    </div>
+                <div class="color-wrap" onclick="color(1)">
+                    <div class="color" style="background:linear-gradient( 135deg, #f5f7fa, #c3cfe2 )"></div><p class="color-title">シルバー</p>
+                    </div>
+                <div class="color-wrap" onclick="color(2)">
+                    <div class="color" style="background:linear-gradient( 135deg, #00EAFF, #3C8CE7 )"></div><p class="color-title">ブルー</p>
+                    </div>
+                <div class="color-wrap" onclick="color(3)">
+                    <div class="color" style="background:linear-gradient( 135deg, #ABDCFF, #0396FF)"></div><p class="color-title">スカイブルー</p>
+                    </div>
+                <div class="color-wrap" onclick="color(4)">
+                    <div class="color" style="background:linear-gradient( 135deg, #81FBB8, #28C76F )"></div><p class="color-title">グリーン</p>
+                    </div>
+                <div class="color-wrap" onclick="color(5)">
+                    <div class="color" style="background:linear-gradient( 135deg, #90F7EC, #32CCBC)"></div><p class="color-title">ミント</p>
+                    </div>
+                <div class="color-wrap" onclick="color(6)">
+                    <div class="color" style="background:linear-gradient( 135deg, #f77062, #ff0844)"></div><p class="color-title">レッド</p>
+                    </div>
+                <div class="color-wrap" onclick="color(7)">
+                    <div class="color" style="background:linear-gradient( 135deg, #FFD3A5, #FD6585)"></div><p class="color-title">ピーチ</p>
+                    </div>
+                <div class="color-wrap" onclick="color(8)">
+                    <div class="color" style="background:linear-gradient( 135deg, #FEC163, #DE4313)"></div><p class="color-title">オレンジ</p>
+                    </div>
+                <div class="color-wrap" onclick="color(9)">
+                    <div class="color" style="background:linear-gradient( 135deg, #FDEB71, #F8D800)"></div><p class="color-title">レモン</p>
+                    </div>
+                <div class="color-wrap" onclick="color(10)">
+                    <div class="color" style="background:linear-gradient( 135deg, #F6CEEC, #D939CD)"></div><p class="color-title">ピンク</p>
+                    </div>
+                <div class="color-wrap" onclick="color(11)">
+                    <div class="color" style="background:linear-gradient( 135deg, #CE9FFC, #7367F0 )"></div><p class="color-title">パープル</p>
+                    </div>
+                <div class="color-wrap" onclick="color(12)">
+                    <div class="color" style="background:linear-gradient( 135deg, #21D4FD, #B721FF )"></div><p class="color-title">グラデーション 1</p>
+                    </div>
+                <div class="color-wrap" onclick="color(13)">
+                    <div class="color" style="background:linear-gradient( 135deg, #2AF598, #08AEEA )"></div><p class="color-title">グラデーション 2</p>
+                    </div>
+                <div class="color-wrap" onclick="color(14)">
+                    <div class="color" style="background:linear-gradient( 135deg, #FBDA61, #FF5ACD )"></div><p class="color-title">グラデーション 3</p>
+                    </div>
+                <div class="color-wrap" onclick="color(15)">
+                    <div class="color" style="background:linear-gradient( 135deg, #A9C9FF, #FFBBEC )"></div><p class="color-title">グラデーション 4</p>
+                    </div>
+                <div class="color-wrap" onclick="color(16)">
+                    <div class="color" style="background:linear-gradient( 135deg, #85FFBD, #FFFB7D )"></div><p class="color-title">グラデーション 5</p>
+                    </div>
+                <div class="color-wrap" onclick="color(17)">
+                    <div class="color" style="background:linear-gradient( 135deg, #FFDEE9, #B5FFFC )"></div><p class="color-title">グラデーション 6</p>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="credit">
+        <header class="question">
+            <div onclick="store(3)">キャンセル</div>
+            <p id="title">クレジット</p>
+        </header>
+        
+        <div class="list i" style="height:calc( 100vh - 56px );">
+            <p>Seventeen's</p>
+            <p>version 2.0 beta</p>
+        </div>
+    </section>
+
+    <div id="menu-bar">
+        <div class="item" id="mAdd" onclick="menu(1)">追加</div>
+        <div class="item" id="mEdit" onclick="menu(0)">編集</div>
+        <div class="item" id="mDel" onclick="menu(2)">削除</div>
+    </div>
+        
+    <div id="menu-dialog">
+        <div class="dialog-bac">
+            <div id="add-book" style="display:none">
+                <div class="clear" onclick="imgClear()"></div>
+                <label id="image" for="file">カバーを選択<input id="file" type="file" accept="image/*" onchange="imgLoad(this.files)"></label>
+                <input id="input-book" placeholder="タイトルを入力">
+                <div class="option">
+                    <a onclick="afterMenu(0)">閉じる</a>
+                    <a onclick="afterMenu()">完了</a>
+                </div>
+            </div>
+            <div id="add-chapter" style="display:none">
+                <div style="display:flex">
+                    <input id="input-chapter" placeholder="タイトルを入力">
+                    <select id="language">
+                        <option disabled="">言語を選択</option>
+                        <option selected="">なし</option>
+                        <option>日本語 ( ja-JP )</option>
+                        <option>アメリカ英語 ( en-US )</option>
+                        <option>イギリス英語 ( en-GB )</option>
+                        <option>スペイン語 ( es-ES )</option>
+                        <option>ポルトガル語 ( pt-PT )</option>
+                        <option>フランス語 ( fr-FR  )</option>
+                        <option>イタリア語 ( it-IT )</option>
+                        <option>ドイツ語 ( de-DE )</option>
+                        <option>ロシア語 ( ru-RU )</option>
+                        <option>アラビア語 ( ar-SA )</option>
+                        <option>中国語 ( zh-CN )</option>
+                        <option>韓国語 ( ko-KR )</option>
+                    </select>
+                </div>
+                <div class="option">
+                    <a onclick="afterMenu(0)">閉じる</a>
+                    <a onclick="afterMenu()">完了</a>
+                </div>
+            </div>
+            <div id="add-word" style="display:none">
+                <input id="input-word" placeholder="単語を入力">
+                <input id="input-mean" placeholder="意味を入力">
+                <textarea id="input-explain" placeholder="説明を入力"></textarea>
+                <div class="option">
+                    <a onclick="afterMenu(0)">閉じる</a>
+                    <a onclick="afterMenu()">完了</a>
+                </div>
+            </div>
+            <div id="del" style="display:none">
+                <div id="del-message"></div>
+                <div class="option">
+                    <a onclick="afterMenu()" style="color:#f13069">削除</a>
+                    <a onclick="afterMenu(0)">閉じる</a>
+                </div>
+            </div>
+            <div id="add-wrong" style="display:none">
+                <input id="input-wrong" placeholder="タイトルを入力">
+                <div class="option">
+                    <a onclick="afterMenu(0)">閉じる</a>
+                    <a onclick="afterSave()">完了</a>
+                </div>
+            </div>
+            <div id="dwn-csv" style="display:none">
+                <p>CSV ファイルを準備しました。<br>ダウンロードしてください。</p>
+                <div class="option">
+                    <a onclick="afterMenu(0)">閉じる</a>
+                    <a id="download" onclick="afterMenu(0)" target="_blank">ダウンロード</a>
+                </div>
+            </div>
+        </div>
+        <div id="csv-open" class="dialog-bac2">
+                <label class="csv" for="csv">CSV ファイルからインポート<input id="csv" type="file" accept="text/csv" onchange="csvLoad(this.files)" style="display:none"></label>
+        </div>
+    </div>
+
+    <div id="goal">
+        <div class="dialog-bac">
+            <div style="display:flex">
+                <input id="gInput" style="margin:8px 0"type="tel">
+                <select id="gSelect" style="width:30vw;margin:8px 0 8px 8px">
+                    <option disabled>目標を設定</option>
+                    <option>問</option>
+                    <option>分</option>
+                    <option>時間</option>
+                </select>
+            </div>
+
+            <div class="option">
+                <a onclick="goal()">閉じる</a>
+                <a id="cancel" style="display:none" onclick="goal(0)">中止</a>
+                <a onclick="goal(1)">開始</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="dialog">
+        <div class="dialog-bac">
+            <div id="message"></div>
+            <div class="option">
+                <a id="can" onclick="dialog(0)">閉じる</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="reveal-dialog">
+        <div class="dialog-bac">
+            <p id="cnt3" style="position: absolute;top:0;left: 0;padding:16px;color:#888"></p>
+            <input type="checkbox" id="checked3" onclick="mark( this.checked )" style="display:none">
+            <label id="check3" for="checked3" style="border:1px solid #888">
+                <span style="position:absolute;top:-8px;right:-8px"><svg width="30" height="30">
+                    <g><path id="mark3" d="m9.28798,14.93603l3.67804,3.71003l7.48401,-7.42005"/></g>
+                </svg></span>
+            </label>
+            <input id="edit-word" placeholder="単語を入力"/>
+            <input id="edit-mean" placeholder="意味を入力"/>
+            <textarea id="edit-exp" placeholder="説明を入力"></textarea>
+            <div class="option">
+                <a id="del3" onclick="dialog2(1)" style="color:#f13069">削除</a>
+                <a onclick="dialog2(0)">閉じる</a>
+            </div>
+        </div>
+    </div>
+
+    <iframe id="ifrm" src="http://astrongame.webcrow.jp/connect.html" style="display:none"></iframe>
+</body>
+
+<script>
+    var StartX, MoveX, startX2, moveX2, week = 0, startX3, moveX3, valNum;
+
+    $( 'main' ).addEventListener( 'touchstart', function( event ) {
+
+        StartX = event.touches[0].pageX, MoveX = StartX;
+
+    }, false);
+
+    $( 'main' ).addEventListener( 'touchmove', function( event ) {
+
+        if ( ! onSlider ) MoveX = event.changedTouches[0].pageX;
+
+    }, false);
+
+    $( 'main' ).addEventListener( 'touchend', function( event ) {
+
+        if ( StartX > ( MoveX + 80 ) ) change();
+
+    }, false);
+
+    $( 'graph' ).addEventListener( 'touchstart', function( event ) {
+
+        startX2 = event.touches[0].pageX, moveX2 = startX2;
+        $( 'figure' ).style.transitionDuration = '.4s'
+        
+    }, false);
+
+    $( 'graph' ).addEventListener( 'touchmove', function( event ) {
+
+        event.preventDefault();
+
+        if ( ! onDetail ) {
+
+            moveX2 = event.changedTouches[0].pageX;
+            $( 'figure' ).style.transform = 'translateX( ' + ( moveX2 - startX2 ) + 'px )';
+            $( 'figure' ).style.opacity = 1 - ( Math.abs( moveX2 - startX2 ) / 200 );
+
+        }
+
+    }, false);
+    
+    $( 'graph' ).addEventListener( 'touchend', function( event ) {
+
+        $( 'figure' ).style.opacity = 1;
+
+        if ( Math.abs( moveX2 - startX2 ) > 80 ) {
+
+            ( startX2 > moveX2 ) ? week += 7 : week -= 7;
+            $( 'figure' ).style.animation = ( startX2 > moveX2 ) ? 'prevGraph 1s ease' : 'nextGraph 1s ease';
+            getData( 5, sub, week );
+
+            $( 'figure' ).addEventListener( 'webkitAnimationEnd', function() {
+                $( 'figure' ).style.animation = '';
+                $( 'figure' ).style.transform = '';
+                $( 'figure' ).style.transitionDuration = '0s'
+            }, false );
+
+        } else $( 'figure' ).style.transform = '';
+
+    }, false);
+
+    $( 'sub' ).onscroll = function() {
+
+        if ( ! checked.checked ) $( 'menu-btn' ).style.transform = 'translateY( ' + ( this.scrollTop * -1 ) + 'px)';
+
+    }
+
+    var appCache = window.applicationCache;
+    var checkUpdate = function() {
+
+        if ( navigator.onLine ) appCache.update();
+
+    }
+
+    appCache.addEventListener( 'updateready', function() {
+
+        appCache.swapCache();
+        location.reload();
+
+    }, false );
+
+    var indexedDB = window.indexedDB || window.mozIndexedDB || window.msIndexedDB;
+
+    var onDark, onGoal, onDialog, onWord, onMore, onSlider, onDetail, onStore, row4 = [], up, prePage = 0;
+    var imgData = 'data:image/jpeg;base64,';
+
+    function $( e ) { return document.getElementById( e ); }
+
+    function newDB( name ) {
+
+        db.close();
+
+        if ( indexedDB ) {
+
+            var newRequest = indexedDB.open( 'SeventeensDB', ver + 1 );
+           
+            newRequest.onupgradeneeded = function( event ) {
+
+                db = event.target.result;
+
+                var store = db.createObjectStore( name + '-main', { keyPath: 'key', autoIncrement: true } );
+                store.createIndex( 'cateIndex', 'category' );
+                store.createIndex( 'crctIndex', 'correct' );
+                store.createIndex( 'cacoIndex', ['category', 'correct'] );
+                store.createIndex( 'cachIndex', ['category', 'check'] );
+                store.createIndex( 'cawrIndex', ['category', 'wrong'] );
+                store.createIndex( 'keyIndex', 'key' );
+                store.createIndex( 'kecoIndex', ['correct', 'key'] );
+                store.createIndex( 'kechIndex', ['check', 'key'] );
+                store.createIndex( 'kewrIndex', ['wrong', 'key'] );
+
+                var store = db.createObjectStore( name + '-list', { keyPath: 'key', autoIncrement: true } );
+                store.createIndex( 'cateIndex', 'title' );
+
+                var store = db.createObjectStore( name + '-record', { keyPath: 'key', autoIncrement: true } );
+                store.createIndex( 'dataIndex', 'date' );
+
+                var store = db.createObjectStore( name + '-wrong', { keyPath: 'key', autoIncrement: true } );
+                store.createIndex( 'keyIndex', 'key' );
+
+            }
+
+            newRequest.onsuccess = function( event ) {
+
+                db = event.target.result;
+
+                var store = db.transaction( ['subject'], 'readwrite' ).objectStore( 'subject' );
+                var request = store.put( { title: name, table: name, font: '40', all: '0', img: imgData } );
+
+                request.onsuccess = function() {
+
+                    db.close();
+                    dif = 2; getData( 4, 0 );
+
+                }
+
+                imgData = 'data:image/jpeg;base64,';
+
+            }
+
+        }
+
+    }
+
+    function delDB( name ) {
+
+        db.close();
+
+        if ( indexedDB ) {
+
+            var delRequest = indexedDB.open( 'SeventeensDB', ver + 1 );
+                            dialog( '削除しています。ver.'+ver );
+
+            delRequest.onupgradeneeded = function( event ) {
+
+                db = event.target.result;
+                            dialog( '削除しています。1' );
+
+            }
+
+            delRequest.onsuccess = function( event ) {
+                            dialog( '削除しています。3' );
+
+                db = event.target.result;
+
+                var store = db.transaction( ['subject'], 'readwrite' ).objectStore( 'subject' );
+                var request = store.delete( Number( row3[0] ) );
+
+                request.onsuccess = function( event ) {
+
+                    db.close();
+
+                    $( 'can' ).style.display = 'block';
+                    dialog( '削除しました。' );
+
+                    $( 'menu' ).className = 'close';
+                    dif = 2; getData( 4, 0 );
+
+                }
+
+            }
+
+        }
+
+    }
+
+    function slideMenu( code ) {
+
+        $( 'sub' ).style.filter = ( code ) ? 'blur( 15px ) opacity( 50% )' : '';
+        $( 'sub' ).style.transform = ( code ) ? 'translateX( 50% ) scale( .9 )' : '';
+        $( 'sub' ).style.overflowY = ( code ) ? 'hidden' : 'scroll';
+        $( 'slide' ).style.transform = ( code ) ? 'translateX( 0 )' : '';
+        $( 'menu-bar' ).style.transform = ( code ) ? 'translateY( 64px )' : '';
+
+    }
+
+    function dark() {
+
+        onDark ^= 1;
+        $( 'body' ).className = ( onDark ) ? 'dark' : '';
+        $( 'swich' ).innerHTML = ( onDark ) ? 'ON' : 'OFF';
+
+    }
+
+    function store( code ) {
+
+        onStore ^= 1, obj = ( code == 1 ) ? $( 'store' ) : ( code == 2 ) ? $( 'theme' ) : $( 'credit' );
+
+        obj.className = ( onStore ) ? 'open2' : 'close2';
+
+    }
+
+    function sample( code ) {
+
+        $( 'ifrm' ).contentWindow.postMessage( code, 'http://astrongame.webcrow.jp/' );
+        timer = 0;
+
+        window.addEventListener( 'message', function( event ) {
+
+            if ( timer == 0 ) {
+
+                var element = document.createElement( 'script' );
+                element.id = 'exe', element.innerHTML = event.data;
+                $( 'body' ).appendChild( element );
+
+                timer = 1;
+                dialog( 'ダウンロードしました。' );
+
+            }
+
+        }, false );
+
+    }
+
+    function color( code ) {
+
+        var back = [ [ 'd6eeff','83a0af' ], [ 'f5f7fa','c3cfe2' ], [ '00eaff','3c8ce7' ], [ 'abdcff','0396ff' ], [ '81fbb8','28c76f' ], [ '90f7ec','32ccbc' ], [ 'f77062', 'ff0844'], [ 'ffd3a5','fd6585' ], [ 'fec163','de4313' ], [ 'fdeb71','f8d800' ], [ 'f6ccec','d939cd' ], [ 'ce9ffc','7367f0' ], [ '21D4FD','B721FF' ], [ '2AF598','08AEEA' ], [ 'FBDA61','FF5ACD' ], [ 'A9C9FF','FFBBEC' ], [ '85FFBD','FFFB7D' ], [ 'FFDEE9','B5FFFC' ] ];
+
+        $( 'body' ).style.background = '#007aff linear-gradient( 135deg, #' + back[code][0] + ', #' + back[code][1] + ' )';
+
+        var store = db.transaction( ['setting'], 'readwrite' ).objectStore( 'setting' );
+        var request = store.put( { key: 1, color1: back[code][0],  color2: back[code][1] } );
+
+    }
+
+    function dialog( mes ) {
+
+        var objDialog = $( 'dialog' ), objMessage = $( 'message' );
+
+        if ( ! mes ) {
+
+            objDialog.style.animation = 'fadeOut2 .4s ease .1s backwards';
+            objDialog.className = '';
+
+        } else {
+
+            objDialog.style.animation = 'fade2 .5s ease forwards';
+            objDialog.className = 'on';
+            objMessage.innerHTML = mes;
+
+        }
+
+    }
+
+    function dialog2( num ) {
+
+        onWord ^= 1;
+        var objDialog = $( 'reveal-dialog' ), word = $( 'edit-word' ), mean = $( 'edit-mean' ), exp = $( 'edit-exp' );
+        var open = ( $( 'main' ).className == 'open' ) ? false : true;
+
+        if ( onWord ) {
+
+            row2 = data2[num];
+
+            word.style.fontSize = row3[3] + 'px';
+            word.value = row2[0], mean.value = row2[1], exp.value = row2[2];
+            
+            $( 'cnt3' ).innerHTML = num + 1;
+            $( 'checked3' ).checked = ( row2[6]  == '1' ) ? true : false;
+
+            word.disabled = ( open ) ? false : true, mean.disabled = ( open ) ? false : true, exp.disabled = ( open ) ? false : true;
+            $( 'del3' ).style.display = ( open ) ? 'block' : 'none';
+
+            objDialog.style.animation = 'fade2 .5s ease forwards';
+            objDialog.className = 'on';
+
+        } else {
+
+            objDialog.style.animation = 'fadeOut2 .4s ease .1s backwards';
+            objDialog.className = '';
+
+            var store = db.transaction( [subTit[sub-1]+'-main'], 'readwrite' ).objectStore( subTit[sub-1]+'-main' );
+
+            if ( num ) {
+
+                var request = store.delete( Number( row2[3] ) );
+
+            } else {
+
+                var word = $( 'edit-word' ).value, mean = $( 'edit-mean' ).value, exp = $( 'edit-exp' ).value;
+                var request = store.put( { key: Number( row2[3] ), category: row2[4], word: word, mean: mean, explain: exp, correct: row2[5], check: row2[6], wrong: row2[7] } );
+
+            }
+
+            request.onsuccess = function( event ) {
+
+                if ( open ) dif = 3; getData( 1, sub, 1, cardNum );
+
+            }
+
+        }
+
+    }
+
+    function menu( code ) {
+
+        page = ( $( 'set' ).className == 'open' ) ? 2 : ( $( 'choice' ).className == 'open' ) ? 3 : ( $( 'menu' ).className == 'open' ) ? 1 : 0; 
+        var objDialog = $( 'menu-dialog' ), kind = [ 'add-wrong', 'add-book', 'add-chapter', 'add-word', 'del', 'dwn-csv' ];
+
+        $( kind[prePage] ).style.display = 'none';
+
+        prePage = ( code == 2 ) ? 4 : code + page, preCode = code;
+
+        if ( prePage != 0 ) {
+
+            valWrong = $( 'wrgSelect' ).selectedIndex - 1, row3 = data3[sub-1];
+
+            var mes = ( page == 1 ) ? row3[1] : ( page == 3 ) ? data5[valWrong][0] : row4[0];
+            element = ( prePage == 1 ) ? 'input-book' : 'input-chapter', option = ( row4[2] - 0 ) + 2;
+
+            $( element ).value = ( code ) ? null : mes;
+            $( 'image' ).style.background = ( code ) ? null : 'url(' + row3[4] + ') no-repeat center center';
+            $( 'image' ).style.backgroundSize = ( code ) ? null : 'contain';
+            if ( code == 0 ) imgData = row3[4];
+
+            if ( code == 0 && page == 2 ) $( 'language' ).getElementsByTagName( 'option' )[option].selected = true;
+            if ( code == 2 ) $( 'del-message' ).innerHTML = ( page == 0 ) ? '全データを削除しますか？' : '「' + mes + '」を削除しますか？';
+
+            $( kind[prePage] ).style.display = 'block';
+            objDialog.style.animation = 'fade2 .5s ease forwards';
+            objDialog.className = ( prePage == 3 ) ? 'on2' : 'on';
+
+        } else onMenu = 0;
+
+    }
+
+    function afterMenu( code ) {
+
+        var objDialog = $( 'menu-dialog' );
+
+        if ( code != 0 ) {
+
+            switch ( prePage ) {
+
+                case 1 :
+                    var book = $( 'input-book' ).value;
+
+                    if ( book != '' ) {
+
+                        if ( preCode ) {
+
+                            for ( var i = 0; i < data3.length; i++ ) if ( data3[i][2] == book ) dialog( 'このタイトルは使用できません。' );
+
+                            newDB( book );
+
+                        } else {
+
+                            var store = db.transaction( ['subject'], 'readwrite' ).objectStore( 'subject' );
+                            var request = store.put( { key: Number( row3[0] ), title: book, table: row3[2], font: row3[3], all: '0', img: imgData } );
+
+                            $( 'name' ).innerHTML = book;
+                            $( 'cover' ).style.background = 'url(' + imgData + ') no-repeat';
+                            $( 'cover' ).style.backgroundSize = 'cover';
+
+                            dif = 2; getData( 4, 0 );
+
+                        }
+
+                    } else dialog( 'タイトルは必須項目です。' );
+
+                    break;
+
+                case 2 :
+                    var chapter = $( 'input-chapter' ).value, lang = $( 'language' ).selectedIndex - 2;
+
+                    if ( chapter != '' ) {
+
+                        var store = db.transaction( [subTit[sub-1]+'-list'], 'readwrite' ).objectStore( subTit[sub-1]+'-list' );
+
+                        if ( preCode ) var request = store.put( { title: chapter, lang: lang } );
+                        else var request = store.put( { key: cardNum,title: chapter, lang: lang } ); $('title1').innerHTML = chapter;
+
+                        dif = 0; getData( 0, sub );
+
+                    } else dialog( 'タイトルは必須項目です。' );
+
+                    break;
+
+                case 3 :
+                    var word = $( 'input-word' ).value, mean = $( 'input-mean' ).value, explain = $( 'input-explain' ).value;
+
+                    if ( word != '' && mean != '' ) {
+
+                        var store = db.transaction( [subTit[sub-1]+'-main'], 'readwrite' ).objectStore( subTit[sub-1]+'-main' );
+                        var request = store.put( { category: String( cardNum ), word: word, mean: mean, explain: explain, check: '0',correct: '0',  wrong: '0' } );
+
+                        request.onsuccess = function ( event ) {
+
+                            data4.push( [ word, mean, explain, event.target.result, cardNum, '0', '0', '0' ] );
+
+                        }
+
+                        dif = 3; getData( 1, sub, 1, cardNum );
+
+                    } else dialog( '単語と意味は必須項目です。' );
+                    
+                    break;
+
+                case 4 :
+                    switch ( page ) {
+
+                        case 0 :
+                            db.close();
+                            indexedDB.deleteDatabase( 'SeventeensDB' );
+
+                            dif = 2; getData( 4, 0 );
+
+                            break;
+
+                        case 1 :
+                            $( 'can' ).style.display = 'none';
+                            dialog( '削除しています。' );
+
+                            delDB( row3[2] );
+
+                            break;
+
+                        case 2:
+                            var store = db.transaction( [subTit[sub-1]+'-list'], 'readwrite' ).objectStore( subTit[sub-1]+'-list' );
+                            var request = store.delete( Number( row4[1] ) );
+
+                            var store = db.transaction( [subTit[sub-1]+'-main'], 'readwrite' ).objectStore( subTit[sub-1]+'-main' );
+                            for (var i = 0; i < data2.length; i++) {
+
+                                row = data2[i];
+                                var request = store.delete( Number( row[3] ) );
+
+                            };
+
+                            request.onsuccess = function() {
+
+                                dif = 0; getData( 0, sub );
+                                $( 'set' ).className = 'close', $( 'menu-bar' ).style.transform = '', up = 0;
+
+                            };
+
+                            break;
+
+                        case 3: 
+                            var store = db.transaction( [subTit[sub-1]+'-wrong'], 'readwrite' ).objectStore( subTit[sub-1]+'-wrong' );
+                            var request = store.delete( Number( data5[valWrong][2] ) );
+
+                            request.onsuccess = function () {
+
+                                dif = 4; getData( 2, sub );
+
+                            }
+
+                            break;
+
+                    }
+
+                    break;
+
+            }
+
+        }
+
+        objDialog.style.animation = 'fadeOut2 .4s ease forwards';
+        objDialog.className = '';
+
+    }
+
+    function imgLoad( file ) {
+
+        var reader = new FileReader();
+        reader.readAsDataURL( file[0] );
+
+        reader.onload = function() {
+
+            imgData = reader.result;
+
+            $( 'image' ).style.background = 'url(' + imgData + ') no-repeat center center';
+            $( 'image' ).style.backgroundSize = 'contain';
+
+        }
+
+    }
+
+    function imgClear() {
+
+        imgData = null;
+        $( 'image' ).style.background = null;
+
+    }
+
+    function csvLoad( file ) {
+
+        var reader = new FileReader();
+        reader.readAsText( file[0] );
+
+        reader.onload = function() {
+
+            var lineArr = reader.result.split( '\n' );
+
+            var store = db.transaction( [subTit[sub-1]+'-main'], 'readwrite' ).objectStore( subTit[sub-1]+'-main' );
+
+            for (var i = 0; i < lineArr.length - 1; i++) {
+
+                var itemArr = lineArr[i].split( ',' );
+                var request = store.put( { category: String( cardNum ), word: itemArr[0], mean: itemArr[1], explain: itemArr[2], check: '0',correct: '0',  wrong: '0' } );
+
+            }
+
+            dif = 3; getData( 1, sub, 1, cardNum );
+            
+            $( 'menu-dialog' ).style.animation = 'fadeOut2 .4s ease forwards';
+            $( 'menu-dialog' ).className = '';
+            $( 'csv' ).value = null;
+
+        }
+
+    }
+
+    function csvSave() {
+
+        var content = '';
+        for ( var i = 0; i < data2.length; i++ ) content += data2[i][0] + ',' + data2[i][1] + ',' + data2[i][2] + '\n';
+
+        var bom = new Uint8Array( [0xEF, 0xBB, 0xBF] ), blob = new Blob([ bom, content ], { 'type' : 'text/csv' });
+
+        $( 'download' ).href = window.URL.createObjectURL( blob );
+        $( 'download' ).download = title + '.csv';
+
+        menu( 3 );
+
+    }
+
+    function save() {
+
+        var objDialog = $( 'menu-dialog' ), kind = [ 'del', 'add-book', 'add-chapter', 'add-word', 'del', 'dwn-csv' ];
+        $( kind[prePage] ).style.display = 'none';
+
+        var dt = new Date(), year = dt.getFullYear(), mon = '0' + ( dt.getMonth() + 1 ), date = '0' + dt.getDate(), hour = '0' + dt.getHours(), min = '0' + dt.getMinutes();
+        $( 'input-wrong' ).value = year + ' / ' + mon.slice( -2 ) + ' / ' + date.slice( -2 ) + ' - ' + hour.slice( -2 ) + ' : ' + min.slice( -2 ) + ' の間違い';
+        $( 'add-wrong' ).style.display = 'block';
+
+        objDialog.style.animation = 'fade2 .5s ease forwards';
+        objDialog.className = 'on';
+
+    }
+
+    function afterSave() {
+
+        var objDialog = $( 'menu-dialog' ), wrong = $( 'input-wrong' ).value;
+
+        if ( wrong != '' ) {
+
+            var store = db.transaction( [subTit[sub-1]+'-wrong'], 'readwrite' ).objectStore( subTit[sub-1]+'-wrong' );
+            var request = store.put( { title: wrong, tango: miss } );
+
+        } else dialog( 'タイトルは必須項目です。' );
+
+        objDialog.style.animation = 'fadeOut2 .5s ease forwards';
+        objDialog.className = '';
+
+        prePage = 0;
+
+    }
+
+    function goal( code ) {
+
+        onDialog ^= 1;
+        var objGoal = $( 'goal' ), objCancel = $( 'cancel' ), objRemain = $( 'remain' );
+
+        if ( onDialog ) {
+
+            objGoal.style.animation = 'fade2 .5s ease forwards';
+            objGoal.className = 'on';
+
+            objCancel.style.display = ( onGoal ) ? 'block' : 'none';
+
+        } else {
+
+            objGoal.style.animation = 'fadeOut2 .4s ease .1s backwards';
+            objGoal.className = '';
+
+            switch ( code ) {
+
+                case 0 :
+                    objRemain.innerHTML = '目標';
+
+                    onGoal = code;
+                    break;
+
+                case 1 :
+                    var valInput = $( 'gInput' ).value - 0;
+                    gMode = $( 'gSelect' ).selectedIndex;
+
+                    gGoal = ( gMode == 1 ) ?  valInput : ( gMode == 2 ) ? valInput * 60 : valInput * 3600;
+                    
+                    ( gMode == 1 ) ? objRemain.innerHTML = 'あと ' + gGoal + ' 問' :
+                    objRemain.innerHTML = 'あと ' + Math.floor( gGoal / 3600 )  + ':' + ( '0' + gGoal % 3600 / 60 ).slice( -2 );
+
+                    onGoal = code;
+                    break;
+
+            }
+
+        }
+
+    }
+
+    function more( code ) {
+
+        onMore ^= 1, dif = 4;
+        $( 'record' ).style.animation = ( onMore ) ? 'open .8s ease forwards' : 'close .5s ease forwards';
+        $( 'more' ).innerHTML = ( onMore ) ? 'とじる' : 'ひらく';
+        $( 'arrow' ).style.transform = ( onMore ) ? 'rotate(135deg) translateY(-6px)' : 'rotate(-45deg)';
+
+        if ( onMore ) getData( 5, sub, 0 );
+        if ( onDetail ) $( 'detail' ).className = 'detail title';
+
+    }
+
+    function graph( code ) {
+
+        var bar = $( 'bar' ), line = $( 'line' ), xAxis = $( 'xaxis' ), width = 100 / 6;
+        bar.textContent = null, line.textContent = null, xAxis.textContent = null;
+
+        var date = new Date();
+        date.setDate( date.getDate() - 7 + code );
+
+        for ( var i = 0; i < 7; i++ ) {
+
+            var row = get[i].split( ',' ), height = 140 * row[0] / maxNum;
+
+            bar.innerHTML += '<span style="height:' + height + 'px;bottom:-' + ( 160 - height ) +'px;animation-delay:.' + ( i + 3 ) + 's;"><p>' + row[0] + '</p></span>';
+
+            date.setDate( date.getDate() + 1 );
+            var year = date.getFullYear(), mon = date.getMonth() + 1, day = date.getDate();
+            var ymd = year + ' / ' + ( '0' + mon ).slice( -2 ) + ' / ' + ( '0' + day ).slice( -2 );
+
+            var data = ( i ) ? day : mon + ' / ' + day;
+            xAxis.innerHTML += '<p onclick="detail(\'' + ymd + '\',' + row[0] + ',' + row[1] + ')">' + data + '</p>';
+
+        }
+
+        for ( var i = 0; i < 6; i++ ) {
+
+            var row = get[i].split( ',' ), row2 = get[i+1].split( ',' ), height1 = 140 - ( 120 * row[1] / maxTime ), height2 = 140 - ( 120 * row2[1] / maxTime );
+
+            line.innerHTML += '<line style="animation-delay:.' + ( i + 4 ) + 's;" x1="' + width * i + '%" y1="' + height1 + 'px" x2="' + width * ( i + 1 ) + '%" y2="' + height2 + 'px"></line>';
+
+            if ( i < 5 ) height1 = height2;
+
+
+        }
+
+    }
+
+    function detail( date, num, time ) {
+
+        onDetail ^= 1;
+
+        if ( onDetail ) {
+
+            var min = Math.floor( time / 60 );
+            var sec = ( '0' +  time % 60 ).slice( -2 );
+            var time = min + ':' + sec;
+
+            $( 'detail' ).className = 'detail title on2';
+            $( 'date' ).innerHTML = date;
+            $( 'num-qu' ).innerHTML = num;
+            $( 'time' ).innerHTML = time;
+
+        } else $( 'detail' ).className = 'detail title';
+
+    }
+
+    function speech() {
+
+        if ( row4[2] == -1 || ( valMode == 3 && right == 1 )  ) return;
+
+        var msg = new SpeechSynthesisUtterance();
+        var lang = [ 'ja-JP', 'en-US', 'en-GB', 'es-ES', 'pt-PT', 'fr-FR', 'it-IT', 'de-DE', 'ru-RU', 'ar-SA', 'zh-CN', 'ko-KR' ];
+
+        msg.lang = lang[row4[2]], msg.text = word;
+        speechSynthesis.speak( msg );
+
+    }
+
+    function mark( code ) {
+
+        speechSynthesis.cancel();
+
+        var onof = ( code ) ? '1' : '0';
+        setData( 0, sub, row2, onof );
+
+        row2[6] = onof;
+        dif = 3; getData( 1, sub, 1, cardNum );
+
+    }
+
+    function slider( val ) {
+
+        if ( ! val ) {
+
+            onSlider ^= 1, $( 'range' ).value = row3[3];
+
+            $( 'slider' ).style.animation = ( onSlider ) ? 'slider_open .4s ease forwards' : 'slider_close .4s ease forwards';
+
+        } else {
+
+            $( 'quest1' ).style.fontSize = val + 'px';
+            $( 'quest2' ).style.fontSize = val + 'px';
+
+            setData( 3, sub, row3, val );
+            row3[3] = val;
+
+        }
+
+    }
+
+    function setData( send, sub, row, cnt ) {
+
+        if ( indexedDB ) {
+
+            var openRequest = indexedDB.open( 'SeventeensDB' );
+                   
+            openRequest.onupgradeneeded = function( event ) {
+
+                db = event.target.result;
+
+            }
+
+            openRequest.onsuccess = function( event ) {
+
+                db = event.target.result;
+
+                switch ( send ) {
+
+                    case 0 :
+                        var store = db.transaction( [subTit[sub-1]+'-main'], 'readwrite' ).objectStore( subTit[sub-1]+'-main' );
+                        var request = store.put( { key: Number( row[3] ), category: row[4], word: row[0], mean: row[1], explain: row[2], correct: row[5], check: String( cnt ), wrong: row[7] } );
+
+                        break;
+
+                    case 1 : 
+                        var store = db.transaction( [subTit[sub-1]+'-main'], 'readwrite' ).objectStore( subTit[sub-1]+'-main' );
+                        var request = store.put( { key: Number( row[3] ), category: row[4], word: row[0], mean: row[1], explain: row[2], correct: String( cnt ), check: row[6], wrong: row[7] } );
+
+                        break;
+
+                    case 2 :
+                        var wrong = String( Number( row[7] ) + 1 );
+
+                        var store = db.transaction( [subTit[sub-1]+'-main'], 'readwrite' ).objectStore( subTit[sub-1]+'-main' );
+                        var request = store.put( { key: Number( row[3] ), category: row[4], word: row[0], mean: row[1], explain: row[2], correct: row[5], check: row[6], wrong: wrong } );
+
+                        break;
+
+                    case 3 :
+                        var store = db.transaction( ['subject'], 'readwrite' ).objectStore( 'subject' );
+                        var request = store.put( { key: Number( row[0] ), title: row[1], table: row[2], font: cnt, img: row[4] } );
+
+                        break;
+
+                    case 4 :
+                        var date = new Date();
+                        var month = ( '0' + ( date.getMonth() + 1 ) ).slice( -2 ), day = ( '0' + date.getDate() ).slice( -2 );
+                        var today = '' + date.getFullYear() + '' + month + '' + day + '';
+
+                        var store = db.transaction( [subTit[sub-1]+'-record'], 'readwrite' ).objectStore( subTit[sub-1]+'-record' );
+                        var index = store.index( 'dataIndex' );
+                        var range = IDBKeyRange.only( today );
+                        var request = index.openCursor( range );
+
+                        request.onsuccess = function( event ) {
+
+                            var cursor = event.target.result;
+
+                            if ( cursor != null ) {
+
+                                var number = ( cursor.value.number - 0 ) + row, time = ( cursor.value.time - 0 ) + cnt;
+                                var request = store.put({key: Number( cursor.value.key ), date: today, number: number, time: time});
+
+                            } else {
+
+                                var request = store.put({date: today, number: row, time: cnt});
+
+                            }
+
+                        }
+
+                        break;
+
+                }
+
+            }
+
+        }
+
+    }
+
+    function getData( send, sub, cnt, quest, set, card ) {
+
+        if ( indexedDB ) {
+
+            var openRequest = indexedDB.open( 'SeventeensDB' );
+
+            openRequest.onupgradeneeded = function( event ) {
+
+                db = event.target.result;
+                var store = db.createObjectStore( 'setting', { keyPath: 'key', autoIncrement: true } );
+                var store = db.createObjectStore( 'subject', { keyPath: 'key', autoIncrement: true } );
+                store.createIndex( 'cateIndex', 'title' );
+
+            }
+
+            openRequest.onsuccess = function( event ) {
+
+                db = event.target.result, ver = db.version;
+
+                switch ( send ) {
+
+                    case 0 :
+                        get = [], get2 = [], get3 = [], data4 = [], wrongSum = 0, wrongMax = 0;
+                        var store = db.transaction( [subTit[sub-1] + '-main'] ).objectStore( subTit[sub-1] + '-main' );
+
+                        store.index( 'crctIndex' ).count( '1' ).onsuccess = function ( event ) {
+                            get.push( event.target.result );
+                        }
+
+                        store.count().onsuccess = function ( event ) {
+                            get.push( event.target.result );
+                        }
+
+                        var store1 = db.transaction( [subTit[sub-1] + '-list'] ).objectStore( subTit[sub-1] + '-list' );
+                        store1.openCursor().onsuccess = function( event ) {
+
+                            if ( event.target.result == null ) setTimeout( 'as()', 100 );
+
+                            var cursor = event.target.result, value = cursor.value;
+                            get.push( [ value.title, value.key, value.lang ] );
+
+                            var store2 = db.transaction( [subTit[sub-1] + '-main'] ).objectStore( subTit[sub-1] + '-main' );
+                            store2.index( 'cacoIndex' ).count( [ String( value.key ), '1' ] ).onsuccess = function( event ) {
+                                get2.push( event.target.result );
+                            }
+
+                            store2.index( 'cateIndex' ).count( String( value.key ) ).onsuccess = function( event ) {
+                                get3.push( event.target.result );
+                            }
+
+                            cursor.continue();
+
+                        }
+
+                        store.openCursor().onsuccess = function ( event ) {
+
+                            var cursor = event.target.result, value = cursor.value;
+                            data4.push( [ value.word, value.mean, value.explain, value.key, value.category, value.correct, value.check, value.wrong ] );
+
+                            wrongSum += Number( value.wrong );
+                            if ( wrongMax < value.wrong ) wrongMax = Number( value.wrong );
+
+                            cursor.continue();
+
+                        }
+
+                        break;
+
+                    case 1 :
+                        var store = db.transaction( [subTit[sub-1]+'-main'] ).objectStore( subTit[sub-1]+'-main' );
+
+                        switch ( cnt ) {
+
+                            case 1 :
+                                var index = store.index( 'cateIndex' );
+                                var range = IDBKeyRange.only( String( quest ) );
+
+                                break;
+
+                            case 2 :
+                                var index = store.index( 'cacoIndex' );
+                                var range = IDBKeyRange.only( [ String( quest ), '0' ] );
+
+                                break;
+
+                            case 3 :
+                                var index = store.index( 'cachIndex' );
+                                var range = IDBKeyRange.only( [ String( quest ), '1' ] );
+
+                                break;
+
+                            case 4 :
+                                var index = store.index( 'cawrIndex' );
+                                var low = [ String( quest ), String( wrongSum / data4.length ) ], up = [ String( quest ), String( wrongMax ) ];
+                                var range = IDBKeyRange.bound( low, up );
+
+                                break;
+
+                            case 5 :
+                                var index = store.index( 'keyIndex' );
+                                var range = IDBKeyRange.bound( quest, set );
+
+                                break;
+
+                            case 6 :
+                                var index = store.index( 'kecoIndex' );
+                                var low = [ '0', quest ], up = [ '0', set ];
+                                var range = IDBKeyRange.bound( low, up );
+
+                                break;
+
+                            case 7 :
+                                var index = store.index( 'kechIndex' );
+                                var low = [ '1', quest ], up = [ '1', set ];
+                                var range = IDBKeyRange.bound( low, up );
+
+                                break;
+
+                            case 8 :
+                                var index = store.index( 'kewrIndex' );
+                                var low = [ String( wrongSum / data4.length ), quest ], up = [ String( quest ), set ];
+                                var range = IDBKeyRange.bound( low, up );
+
+                                break;
+
+                        }
+
+                        get = [], numCheck = 0, numCorrect = 0;
+
+                        index.openCursor( range ).onsuccess = function( event ) {
+
+                            if ( event.target.result == null ) as();
+
+                            var cursor = event.target.result, value = cursor.value;
+                            get.push( [ value.word, value.mean, value.explain, value.key, value.category, value.correct, value.check, value.wrong ] );
+
+                            if ( value.check == '1' ) numCheck++;
+                            if ( value.correct == '0' ) numCorrect++;
+                                
+                            cursor.continue();
+
+                        }
+
+                        break;
+
+                    case 2 : 
+                        get = [];
+                        var store = db.transaction( [subTit[sub-1]+'-wrong'] ).objectStore( subTit[sub-1]+'-wrong' );
+
+                        store.openCursor().onsuccess = function ( event ) {
+
+                            if ( event.target.result == null ) as();
+
+                            var cursor = event.target.result, value = cursor.value;
+                            get.push( [ value.title, value.tango, value.key ] );
+
+                            cursor.continue();
+
+                        }
+
+                        break;
+
+                    case 4 :
+                        get = [], get2 = [], get3 = [], get4= '', subTit = [];
+
+                        var setRequest = db.transaction( ['setting'] ).objectStore( 'setting' ).openCursor();
+                        setRequest.onsuccess = function( event ) {
+
+                            get4 = event.target.result.value;
+                            $( 'body' ).style.background = '#007aff linear-gradient( 135deg, #' + get4.color1 + ', #' + get4.color2 + ' )';
+
+                        }
+
+                        var request = db.transaction( ['subject'] ).objectStore( 'subject' ).openCursor();
+
+                        request.onsuccess = function( event ) {
+
+                            if( event.target.result == null ) setTimeout( 'as()', 100 );
+
+                            var cursor = event.target.result, value = cursor.value;
+                            var tab = value.table + '-main', store = db.transaction( [tab] ).objectStore( tab );
+
+                            get.push( [ value.key, value.title, value.table, value.font, value.img ] );
+                            subTit.push( value.table );
+
+                            store.index( 'crctIndex' ).count( '1' ).onsuccess = function ( event ) {
+                                get2.push( event.target.result );
+                            }
+
+                            store.count().onsuccess = function ( event ) {
+                                get3.push( event.target.result );
+                            }
+
+                            cursor.continue();
+
+                        }
+
+                        break;
+
+                    case 5 :
+                        var date = new Date();
+                        var month = ( '0' + ( date.getMonth() + 1 ) ).slice( -2 ), day = ( '0' + date.getDate() ).slice( -2 );
+                        var today = '' + date.getFullYear() + '' + month + '' + day + '' - -cnt;
+
+                        var min = String( today - 6 ), max = String( today );
+                        var store = db.transaction( [subTit[sub-1]+'-record'] ).objectStore( subTit[sub-1]+'-record' );
+                        var range = IDBKeyRange.bound( min, max );
+                        var request = store.index( 'dataIndex' ).openCursor( range );
+                        var date; number = 0, time = 0, maxNum = 1, maxTime = 1;
+
+                        get = new Array();
+                        for ( var i = 0; i < 7; i++ ) get[i] = '0,0';
+
+                        request.onsuccess = function( event ) {
+
+                            if( event.target.result == null ) graph( week );
+
+                            var cursor = event.target.result, value = cursor.value;   
+
+                            var date = value.date, number = value.number, time = value.time;
+                            get[date-min] = number + ',' + time;
+
+                            if ( maxTime < time ) maxTime = time;
+                            if ( maxNum < number ) maxNum = number;
+
+                            cursor.continue();
+
+                        }
+
+                        break;
+
+                }
+
+            }
+
+        }
+
+    }
+
+    function as() {
+
+        switch ( dif ) {
+
+            case 0 :
+                data = get;
+
+                $( 'correct' ).innerHTML = data[0];
+                $( 'all' ).innerHTML = '/ ' + data[1];
+                $( 'rate' ).innerHTML = ( data[0] > 0 ) ? Math.floor( data[0] / data[1] * 100 ) : 0;
+
+                $( 'list' ).style.opacity = 0;
+                $( 'list' ).innerHTML = null, $( 'list' ).innerHTML = '<p onclick="start(1)">範囲の選択</p>';
+                if ( data.length < 3 ) $( 'list' ).innerHTML += '<p onclick="menu(1)">チャプターを追加</p>';
+
+                for ( var i = 2; i < data.length; i++ ) {
+
+                    row = data[i];
+
+                    $( 'list' ).innerHTML += '<p onclick="start(2,' + ( i - 1 ) + ',' + row[1] + ')">' + row[0] + '<span>' + get2[i - 2] + ' / ' + get3[i - 2] + '</span></p>';
+
+                }
+
+                $( 'list' ).style.opacity = 1;
+
+                break;
+
+            case 1 :
+                if ( get == '' ) {
+
+                    $( 'main' ).className = '';
+                    dialog( '条件を満たす単語はありません。' );
+
+                    break;
+
+                }
+
+                get.push( '' ); data2 = get;
+                dif = -1, add = 0, correct = 0, miss = [], right = 0;
+
+                $( 'result' ).className = 'wide prev';
+                $( 'list2' ).className = 'wide prev';
+                $( 'btn' ).setAttribute( 'onclick', 'change()');
+                $( 'listre' ).textContent = null;
+
+                limit = data2.length - 1;
+
+                for( var i = limit - 1; i > 0; i-- ) {
+
+                    var j = Math.floor( Math.random() * ( i + 1 ) );
+                    var tmp = data2[i];
+                    data2[i] = data2[j];
+                    data2[j] = tmp;
+
+                }
+
+                if ( valNum > 1 ) limit = ( valNum - 1 ) * 5;
+                if ( limit > data2.length ) limit = data2.length -1;
+
+                startTime = new Date();
+
+                change();
+
+                break;
+
+            case 2 :
+                data3 = get;
+
+                var objSub = $( 'sub' );
+                objSub.innerHTML = '<div class="logo"><svg viewBox="0 300 960 600" fill="#ffffff"><path d="M88.5,580.5c-6.7,6.4-14.8,9.8-24.1,9.8c-12.9,0-23.2-3.6-31.4-10.9c-7.8-7.3-12-16-12-25.5 c0-5,0.6-9.5,2-13.2l-0.6-1.1c-1.7-2-5-2.8-10.6-2.8c-3.1,0-5.9,1.7-8.1,5s-3.4,8.1-3.4,14c0,12.6,6.2,23.2,18.2,31.6 c12,8.4,26.3,12.6,42.8,12.6s30-4.2,40.9-12.3s16.2-19.9,16.2-35.3c0-8.7-1.7-16.2-4.8-22.4c-3.4-6.2-7.3-10.9-12.6-14.3 c-5-3.4-10.9-6.2-17.1-8.7c-6.2-2.2-12.6-4.5-18.8-6.4c-6.2-2-12-4.2-17.1-7c-5-2.5-9.2-6.2-12.6-10.9c-3.4-4.8-4.8-10.6-4.8-17.6 s2.5-12.9,7.8-17.9c5.3-4.8,12.6-7.3,21.6-7.3c9.2,0,17.1,2.2,24.1,7s10.4,11.2,10.4,19.3c0,5.3-0.8,9-2.2,10.6l0.6,1.1 c1.4,2.2,5,3.1,10.6,3.1c3.1,0,5.6-1.4,7.8-4.2c2.2-2.8,3.4-7,3.4-12.9c0-8.4-4.5-16-13.7-23c-9.2-6.7-21.6-10.4-37-10.4 s-28,3.9-37.8,11.5c-9.8,7.6-14.8,18.2-14.8,31.4c0,7.8,1.7,14.3,4.8,19.9c3.4,5.3,7.3,9.8,12.6,12.9c5,3.1,10.6,5.6,16.8,7.8 c6.2,2.2,12.3,4.5,18.5,6.4c6.2,2.2,11.8,4.5,16.8,7.3c5,2.8,9.2,6.4,12.6,11.5c3.4,4.8,4.8,10.6,4.8,17.6 C98.5,566.3,95.2,574.1,88.5,580.5z"/><path d="M214.2,542.7c0,12.9-3.6,22.7-10.6,29.4c-7,6.7-15.1,10.1-23.8,10.1s-16-2.2-21.3-7s-8.7-11.5-10.1-20.7 c14,0,25.2-3.6,34.2-10.6s13.4-16,13.4-26.9c0-6.7-2-12.3-6.2-17.1c-4.2-4.8-10.6-7.3-19.9-7.3c-12.6,0-22.7,4.5-30.8,13.2 s-12,21-12,36.7s4.5,27.7,13.7,35.6c9.2,8.1,21.3,12,36.1,12c14.8,0,26.3-4.5,33.6-13.2s11.2-18.5,11.2-29.1c0-4.5-1.4-7-4.5-7 C215.3,541.6,214.2,541.9,214.2,542.7L214.2,542.7z M152,510.8c2.8-6.7,7.8-9.8,14.6-9.8c4.5,0,7.8,1.4,10.4,4.5 c2.5,2.8,3.6,7.3,3.6,12.9c0,8.7-3.4,15.4-9.8,19.9c-6.4,4.5-14.3,7.3-23.2,8.4v-2C147.8,528.7,149.2,517.5,152,510.8z"/><path d="M212.5,505.8v34.4c0,15.7,3.9,28,11.5,37s17.6,13.4,30,13.4c6.4,0,12.6-2,18.2-6.2 c6.2,3.9,13.2,6.2,21.6,6.2c12.3,0,21.6-3.9,27.4-11.8c6.2-7.8,9-17.6,9-29.7c0-6.7-1.4-10.1-3.9-10.1c-2,0-3.1,0.6-3.4,1.4 c0,14.3-2.5,24.6-7.8,31.6c-5,7-11.8,10.4-19.9,10.4c-6.2,0-11.5-1.4-16.2-4.2c11.8-14.3,17.9-35,17.9-62.4c0-7.6-2-13.7-6.2-18.2 s-9.5-7-16.2-7c-9.8,0-16.8,3.6-20.7,10.9c-4.2,7.3-6.2,17.9-6.2,32.2c0,8.1,1.4,16.2,4.5,24.9s7.6,15.7,13.4,21.6 c-2.8,2.2-5.9,3.4-9.5,3.4c-16.5,0-24.6-14-24.6-41.7v-46.2c-2-2-4.8-3.1-7.8-3.1c-3.4,0-6.2,1.1-8.1,3.4 C213.6,498.2,212.5,501.6,212.5,505.8L212.5,505.8z M280.2,521.2c0,23.8-2.8,40.9-8.1,51c-8.7-9.9-13.1-23.9-13.1-42.3 c0-18.5,4.2-27.7,12.6-27.7C277.2,501.9,280.2,508.3,280.2,521.2L280.2,521.2z"/><path d="M410.1,542.7c0,12.9-3.6,22.7-10.6,29.4c-7,6.7-15.1,10.1-23.8,10.1s-16-2.2-21.3-7s-8.7-11.5-10.1-20.7 c14,0,25.2-3.6,34.2-10.6s13.4-16,13.4-26.9c0-6.7-2-12.3-6.2-17.1c-4.2-4.8-10.6-7.3-19.9-7.3c-12.6,0-22.7,4.5-30.8,13.2 c-8.1,8.7-12,21-12,36.7s4.5,27.7,13.7,35.6c9.2,8.1,21.3,12,36.1,12c15.1,0,26.3-4.5,33.6-13.2c7.3-8.7,11.2-18.5,11.2-29.1 c0-4.5-1.4-7-4.5-7C411.5,541.6,410.4,541.9,410.1,542.7L410.1,542.7z M348.3,510.8c2.8-6.7,7.8-9.8,14.6-9.8 c4.5,0,7.8,1.4,10.4,4.5c2.5,2.8,3.6,7.3,3.6,12.9c0,8.7-3.4,15.4-9.8,19.9s-14.3,7.3-23.2,8.4v-2 C343.8,528.7,345.2,517.5,348.3,510.8z"/><path d="M523.8,540.2c0,15.1-2,26-5.9,32.5c-3.9,6.4-8.4,9.5-13.4,9.5s-9-2-11.5-6.2s-3.9-10.4-3.9-18.5v-30.8 c0-10.9-2.8-19.6-8.4-25.5c-5.6-5.9-12.9-8.7-22.1-8.7c-13.2,0-22.7,5.3-28.6,16.2c0-10.6-3.6-16.2-11.2-16.2 c-3.9,0-6.7,1.1-8.1,3.1v81.7c0,4.2,1.1,7.6,3.4,9.8c2.2,2.2,5,3.4,8.7,3.4s6.2-1.1,7.6-3.1v-36.7c0-18.2,2.5-31.1,7.3-38.9 s11.2-11.5,18.8-11.5c8.7,0,12.9,8.4,12.9,25.5V551c0,12.6,2.8,22.4,8.1,29.1c5.3,6.7,13.2,10.4,23.2,10.4c10.1,0,17.6-3.6,23-10.9 c5.3-7.3,7.8-17.1,7.8-29.1c0-7.6-1.4-11.5-3.9-11.5C524.9,538.8,523.8,539.4,523.8,540.2L523.8,540.2z"/><path d="M524.1,473.9v79c0,12.6,3.6,21.8,10.6,28.3c7,6.4,16.5,9.5,28.6,9.5c12,0,21-3.9,26.9-11.5 c5.9-7.6,8.7-17.1,8.7-28.8c0-7.6-1.4-11.5-3.9-11.5c-2,0-3.1,0.6-3.4,1.4c0,14.8-2,25.5-6.2,31.9c-4.2,6.7-10.6,9.8-19.6,9.8 c-5.9,0-11.2-2.2-15.7-6.4s-6.7-10.4-6.7-18.2v-54h36.7c0-2.8-0.6-4.8-1.4-5.9c-0.8-1.1-2.8-1.7-5.9-1.7h-29.4v-31.9 c-2-2-4.8-3.1-7.8-3.1c-3.4,0-6.2,1.1-8.1,3.4C525.2,466.3,524.1,469.7,524.1,473.9L524.1,473.9z"/><path d="M679.2,542.7c0,12.9-3.6,22.7-10.6,29.4c-7,6.7-15.1,10.1-23.8,10.1s-16-2.2-21.3-7s-8.7-11.5-10.1-20.7 c14,0,25.2-3.6,34.2-10.6s13.4-16,13.4-26.9c0-6.7-2-12.3-6.2-17.1c-4.2-4.8-10.6-7.3-19.9-7.3c-12.6,0-22.7,4.5-30.8,13.2 s-12,21-12,36.7s4.5,27.7,13.7,35.6c9.2,8.1,21.3,12,36.1,12c15.1,0,26.3-4.5,33.6-13.2s11.2-18.5,11.2-29.1c0-4.5-1.4-7-4.5-7 C680.3,541.6,679.5,541.9,679.2,542.7L679.2,542.7z M617.3,510.8c2.8-6.7,7.8-9.8,14.6-9.8c4.5,0,7.8,1.4,10.4,4.5 c2.5,2.8,3.6,7.3,3.6,12.9c0,8.7-3.4,15.4-9.8,19.9c-6.4,4.5-14.3,7.3-23.2,8.4v-2C612.8,528.7,614.2,517.5,617.3,510.8z"/><path d="M766.8,542.7c0,12.9-3.6,22.7-10.6,29.4c-7,6.7-15.1,10.1-23.8,10.1s-16-2.2-21.3-7s-8.7-11.5-10.1-20.7 c14,0,25.2-3.6,34.2-10.6s13.4-16,13.4-26.9c0-6.7-2-12.3-6.2-17.1c-4.2-4.8-10.6-7.3-19.9-7.3c-12.6,0-22.7,4.5-30.8,13.2 s-12,21-12,36.7s4.5,27.7,13.7,35.6c9.2,8.1,21.3,12,36.1,12c15.1,0,26.3-4.5,33.6-13.2s11.2-18.5,11.2-29.1c0-4.5-1.4-7-4.5-7 C767.9,541.6,766.8,541.9,766.8,542.7L766.8,542.7z M704.7,510.8c2.8-6.7,7.8-9.8,14.6-9.8c4.5,0,7.8,1.4,10.4,4.5 c2.5,2.8,3.6,7.3,3.6,12.9c0,8.7-3.4,15.4-9.8,19.9c-6.4,4.5-14.3,7.3-23.2,8.4v-2C700.2,528.7,701.9,517.5,704.7,510.8z"/><path d="M880.2,540.2c0,15.1-2,26-5.9,32.5c-3.9,6.4-8.4,9.5-13.4,9.5s-9-2-11.5-6.2s-3.9-10.4-3.9-18.5v-30.8 c0-10.9-2.8-19.6-8.4-25.5c-5.6-5.9-12.9-8.7-22.1-8.7c-13.2,0-22.7,5.3-28.6,16.2c0-10.6-3.6-16.2-11.2-16.2 c-3.9,0-6.7,1.1-8.1,3.1v81.7c0,4.2,1.1,7.6,3.4,9.8c2.2,2.2,5,3.4,8.7,3.4c3.6,0,6.2-1.1,7.6-3.1v-36.7c0-18.2,2.5-31.1,7.3-38.9 s11.2-11.5,18.8-11.5c8.7,0,12.9,8.4,12.9,25.5V551c0,12.6,2.8,22.4,8.1,29.1c5.3,7,13.2,10.4,23.2,10.4c10.1,0,17.6-3.6,23-10.9 c5.3-7.3,7.8-17.1,7.8-29.1c0-7.6-1.4-11.5-3.9-11.5C881.6,538.8,880.5,539.4,880.2,540.2L880.2,540.2z"/><path d="M920.5,546.7c13.7,4.8,20.4,11.2,20.4,19.3c-0.3,10.6-7.8,16.2-23,16.2c-9.8,0-17.6-3.1-23.2-9.5 c-5.6-6.4-8.4-14.3-8.4-23.8c0-3.1,0.6-5.9,1.4-7.8l-0.6-0.6c-0.6-1.4-2.8-2-6.4-2c-2,0-3.9,1.1-5.3,3.4c-1.7,2.2-2.2,5.3-2.2,9.5 c0,11.2,3.9,20.4,12,28c8.1,7.6,18.8,11.2,31.6,11.2c12.9,0,23.5-2.2,31.4-6.7c7.8-4.5,12-11.5,12-20.4c0-6.2-2-11.5-6.2-15.7 s-9-7.6-14.8-9.8c-5.9-2.2-11.5-4.5-17.4-6.4c-5.9-2-10.6-4.5-14.8-7.6c-4.2-3.1-6.2-6.4-6.2-10.6s1.7-7,5.3-9.2 c3.6-2,8.1-3.1,13.4-3.1s10.4,1.1,14.8,3.6c4.5,2.5,6.7,5,6.7,8.1c0,2.8-0.6,5-1.4,5.9c1.1,1.7,3.6,2.5,7,2.5c2,0,3.6-0.8,5.6-2.2 c2-1.7,2.8-3.6,2.8-6.2c0-5.3-3.4-10.1-9.8-14c-6.4-3.9-15.7-6.2-27.2-6.2s-20.4,2-26.3,6.2c-6.2,4.2-9,9.5-9,16 c0,6.4,2,11.8,5.9,16s8.7,7.3,14.3,9.5C909,542.5,914.6,544.7,920.5,546.7L920.5,546.7z"/><path d="M863.1,489.8c4.2,0,8.1-2.2,11.2-6.7c3.1-4.5,4.5-10.1,4.5-16.8s-1.4-12-4.5-15.7 c-2.8-3.6-6.4-5.6-10.4-5.6c-3.9,0-7,0.8-9,3.1c-2,2-3.1,4.5-3.1,7.3s0.8,5.3,2.8,7.3s4.5,3.1,7.6,3.1s5.6-1.4,7.8-3.9 c0.3,1.1,0.3,3.4,0.3,7c0,3.6-1.1,6.7-3.4,9.5c-2.2,2.8-5.3,3.9-9.2,3.9c-0.8,0.8-1.4,1.7-1.4,3.1c0,1.4,0.6,2.5,2,3.4 C859.8,489.5,861.2,489.8,863.1,489.8L863.1,489.8z"/></svg></div><div class="flip"><input type="checkbox" id="ch" onclick="dark( this.checked )"><label for="ch"></label></div>';
+
+
+                if ( get == '' ) objSub.innerHTML += '<div class="welcom"><div class="title">ようこそ！</div><div>Seventeen\'s は初めてですか？</div><div>まずは、サンプルデータをダウンロードしましょう！</div><div class="download" onclick="sample(0)">ダウンロード</div></div>';
+
+                for ( var i = 0; i < data3.length; i++ ) {
+
+                    row3 = data3[i];
+                    var rate = ( get2[i] > 0 ) ? Math.floor( get2[i] / get3[i] * 100 ) : 0;
+
+                    objSub.innerHTML += '<div class="back" onclick="cmd(' + ( i + 1 ) + ')"><p>' + row3[1] + '</p><nav><div class="num"><p>達成数</p><p id="num' + i + '">' + get2[i] + '</p><p>/ ' + get3[i] + '</p></div><div class="rate"><p>達成率</p><p id="rate' + i + '">' + rate + '</p><p>%</p></div></nav></div><div class="cover" style="background: url(' + row3[4] + ') 0% 0% / cover no-repeat;" onclick="cmd(' + ( i + 1 ) + ')"></div>';
+
+                }
+
+                // if ( ! window.navigator.standalone ) dialog( 'ホーム画面に追加してください。' );
+
+                break;
+
+            case 3 :
+                data2 = get, quest = data2.length, data1 = get;
+
+                $( 'num2' ).innerHTML = '<option disabled>問題数を選択</option><option selected>全て</option>';
+
+                for ( var i = 0; i < ( ( quest / 5 ) - 1 ); i++ ) {
+
+                    var sel = ( i == ( valNum - 2 ) ) ? 'selected' : '';
+                    $( 'num2' ).innerHTML += '<option ' + sel + '>' + ( ( i + 1 ) * 5 ) +' 問</option>';
+
+                }
+
+                $( 'info' ).innerHTML = 'チェック数 : ' + numCheck + ' ・ 未達成数 : ' + numCorrect;
+
+                $( 'word' ).innerHTML = null;
+                $( 'export' ).style.display = ( get == '' ) ? 'none' : 'block';
+                if ( get == '' ) $( 'word' ).innerHTML += '<p onclick="menu(1)">単語を追加</p>';
+
+                for ( var i = 0; i <= ( quest - 1 ); i++ ) {
+
+                    var row2 = data2[i];
+                    $( 'word' ).innerHTML += '<p onclick="dialog2(' + i + ')">' + row2[0] + '<br>' + row2[1] + '<span>' + ( i + 1 ) + '</span></p>';
+
+                }
+
+                $( 'start' ).innerHTML = ( quest < 5 ) ? '単語は 5 個以上必要です。' : 'スタート';
+                $( 'start' ).style.filter = ( quest < 5 ) ? 'brightness( 75% )' : '';
+
+                if ( prePage == 3 ) {
+
+                    dif = 0; getData( 0, sub );
+
+                }
+
+                break;
+
+            case 4 :
+                data5 = get;
+
+                var select = $( 'wrgSelect' );
+                select.innerHTML = '<option disabled>保存した間違いを選択</option>';
+
+                if ( data5 == '' ) select.innerHTML += '<option selected>保存した間違いがありません。</option>';
+
+                for ( var i = 0; i < data5.length; i++ ) select.innerHTML += '<option selected>' + data5[i][0] + '</option>';
+
+                break;
+
+        }
+
+    }
+    
+    function cmd( code ) {
+
+        var cover = $( 'cover' ), menu = $( 'menu' ), name = $( 'name' ), edit = $( 'mEdit' );
+
+        if ( code != 0 ) {
+
+            row3 = data3[code-1];
+
+            cover.style.background = 'url(' + row3[4] + ') no-repeat';
+            cover.style.backgroundSize = 'cover';
+            name.innerHTML = row3[1];
+
+            menu.className = 'open';
+            edit.style.opacity = '1';
+
+            sub = code;
+
+            dif = 0; getData( 0, sub );
+
+        } else {
+
+            menu.className = 'close';
+            edit.style.opacity = '.3';
+
+            $( 'num' + ( sub - 1) ).innerHTML = data[0];
+            $( 'rate' + ( sub - 1) ).innerHTML = ( data[0] > 0 ) ? Math.floor( data[0] / data[1] * 100 ) : 0;
+
+            if ( onMore ) more();
+
+        }
+
+    };
+
+    function start( toggle, num, sel ) {
+
+        if ( toggle < 0 ) title = '選択された範囲';
+        
+        switch ( toggle % 3  ) {
+
+            case 1 :
+                var element = $( 'choice' );
+                np = '1';
+
+                dif = 4; getData( 2, sub );
+
+                break;
+
+            case 2 :
+                var element = $( 'set' );
+                np = '2', dif = 3;
+
+                up ^= 1;
+                $( 'menu-bar' ).style.transform = ( up ) ? 'translateY(-48px)' : '';
+
+                break;
+
+            case 0 :
+                dif = 1;
+
+                var element = $( 'main' );
+                $( 'title2' ).innerHTML = title;
+
+                valTime = $( 'time' + np ).selectedIndex;
+                valNum = $( 'num' + np ).selectedIndex;
+                valMeth = $( 'method' + np ).selectedIndex;
+                valMode = $( 'mode' + np ).selectedIndex;
+                valRev = $( 'reverse' + np ).selectedIndex;
+
+                rep = ( valRev % 2 ) ? [ 0, 1 ] : [ 1, 0 ];
+
+                $( 'quest1' ).style.fontSize = row3[3] + 'px';
+                $( 'quest2' ).style.fontSize = row3[3] + 'px';
+
+                var opa = ( valMode == 3 ) ? [ '0', '1' ] : [ '1', '0' ];
+
+                $( 'quest1' ).style.opacity = opa[0];
+                $( 'quest2' ).style.opacity = opa[0];
+                $( 'text1' ).style.opacity = opa[1];
+                $( 'text2' ).style.opacity = opa[1];
+
+                break;
+
+        }
+
+        element.className = ( toggle < 4 ) ? 'open' : 'close';
+
+        switch ( toggle  ) {
+
+            case 2 :
+                row4 = data[num+1], title = row4[0];
+                $( 'title1' ).innerHTML = title;
+
+                cardNum = sel;
+                getData( 1, sub, 1, cardNum );
+
+                break;
+
+            case -6 :
+                var input1 = $( 'input3' ).value - 0, input2 = $( 'input4' ).value - 0;
+
+                quest = ( input2 - input1 );
+
+                if ( quest > 0 && input1 < data[1] ) {
+
+                    if ( quest > 4 ) {
+
+                        getData( 1, sub, valMeth+4, input1, input2 );
+
+                    } else {
+
+                        element.className = '';
+                        dialog( '単語は 5 個以上必要です。' );
+
+                    }
+
+                } else {
+
+                    element.className = '';
+                    dialog( '入力された数値が不正です。' );
+
+                }
+
+                break;
+
+            case -3 : 
+                if ( data5 != '' ) {
+
+                    $( 'result' ).className = 'wide prev';
+                    $( 'list2' ).className = 'wide prev';
+                    $( 'btn' ).setAttribute( 'onclick', 'change()');
+                    $( 'listre' ).textContent = null;
+                    $( 'title2' ).innerHTML = '間違いなおし';
+
+                    var valWrong = $( 'wrgSelect' ).selectedIndex - 1;
+
+                    data2 = data5[valWrong][1], limit = data2.length - 1;
+                    dif = -2, add = 0, correct = 0, miss = [], right = 0;
+
+                    startTime = new Date();
+
+                    change();
+
+                } else {
+
+                    element.className = '';
+                    dialog( '保存した間違いがありません。' );
+
+                }
+
+                break;
+
+            case 3 :
+                if ( quest > 4 ) {
+
+                    getData( 1, sub, valMeth, cardNum );
+                    $( 'menu-bar' ).style.transform = 'translateY(48px)';
+
+                } else {
+
+                    element.className = '';
+                    dialog( '単語は 5 個以上必要です。' );
+
+                }
+
+                break;
+
+            case 6 :
+                dif = 0; getData( 0, sub );
+                data2 = data1;
+
+                $( 'menu-bar' ).style.transform = 'translateY(-48px)';
+
+                break;
+
+            case 9 :
+                element.className = 'open';
+
+                $( 'result' ).className = 'wide prev';
+                $( 'list2' ).className = 'wide prev';
+                $( 'btn' ).setAttribute( 'onclick', 'change()');
+                $( 'listre' ).textContent = null;
+                $( 'title2' ).innerHTML = '間違いなおし';
+
+                data2 = miss, limit = miss.length - 1;
+                dif = -2, add = 0, correct = 0, miss = [], right = 0;
+
+                startTime = new Date();
+
+                change();
+
+                break;
+
+        }
+
+    };
+
+    function check( code ) {
+
+        ( numAnswer == code ) ? answer( 1 ) : answer( 0 );
+
+    };
+
+    function onkey() {
+
+        if ( event.keyCode == 13 ) {
+
+            document.activeElement.blur();
+
+            ( word.toLowerCase() == objInput.value.toLowerCase() ) ? answer( 1 ) : answer( 0 );
+
+        }
+
+        return event.keyCode != 13;
+
+    }
+
+    function answer( code ) {
+
+        if ( onSlider ) slider();
+
+        if ( right ) {
+
+            right = 0;
+            $( 'btn' ).innerHTML = '次へ';
+
+            if ( valTime != 1 ) objBar.style.animationPlayState = 'paused';
+
+            if ( code ) {
+
+                var color = '#43e97b', name = 'wide next', status = '正解', result = '○';
+
+                setData( 1, sub, row2, '1' );
+
+                correct++;
+
+            } else {
+
+                var color = '#e91e63', name = 'wide shake', status = '不正解', result = '×';
+                miss.push( data2[add-1] );
+
+                setData( 2, sub, row2 );
+
+            }
+
+            objColor.style.background = color;
+            objNumber.style.color = '#fff';
+            objQuest.style.color = '#fff';
+            objLabel.style.border = '1px solid #fff';
+            objFont.style.fill = '#fff';
+            objMark.style.stroke = '#fff';
+            objInput.style.color = '#fff';
+            objInput.style.borderBottomColor = '#fff';
+            objCorrect.className = 'show';
+            objNext.className = name;
+            objStatus.innerHTML = status;
+            if ( valMode == 3 ) objColor.className = 'list-wrap l rotate';
+
+            objList.innerHTML += '<p onclick="dialog2(' + ( add - 1 ) + ')">' + row2[0] + '<br>' + row2[1] + '<span style="color:' + color + ';">' + result + '</span></p>';
+
+            if ( row2[2] != '' ) {
+
+                objAnswer.innerHTML = '<div class="explain">' + row2[2] + '</div>';
+                objAnswer.className = 'up';
+
+            }
+            
+
+        }
+
+    }
+
+    function change() {
+
+        if ( onSlider ) slider();
+
+        var arr = ( add % 2 ) ? ['1', '2'] : ['2', '1'];
+
+        objColor = $( 'color' + arr[0] );
+        objNumber = $( 'cnt' + arr[0] );
+        objQuest = $( 'quest' + arr[0] );
+        objLabel = $( 'check' + arr[0] );
+        objCheck = $( 'checked' + arr[0] );
+        objFont = $( 'font' + arr[0] );
+        objMark = $( 'mark' + arr[0] );
+        objStatus = $( 'status' + arr[0] );
+        objCorrect = $( 'crtans' + arr[0] );
+        objAnswer = $( 'answer' + arr[0] );
+        objInput = $( 'input' + arr[0] );
+        objBar = $( 'bar' + arr[0] );
+        objNext = $( 'list' + arr[0] );
+        objPrev = $( 'list' + arr[1] );
+        objButton = $( 'btn' );
+        objList = $( 'listre' );
+
+        objColor.style.background = '#fff';
+        objNumber.style.color = '#888';
+        objQuest.style.color = '#485664';
+        objLabel.style.border = '1px solid #888';
+        objCheck.checked = false;
+        objFont.style.fill = '#485664';
+        objMark.style.stroke = '#76b1ff';
+        objInput.style.color = '#222';
+        objInput.style.borderBottomColor = '#757575';
+        objCorrect.className = '';
+        objStatus.innerHTML = '';
+        objAnswer.textContent = null;
+        objAnswer.className = '';
+        objInput.value = '';
+
+        if ( right ) {
+
+            miss.push( data2[add-1] );
+            objList.innerHTML += '<p onclick="dialog2(' + ( add - 1 ) + ')">' + row2[0] + '<br>' + row2[1] + '<span style="color:#9e9aa5">ー</span></p>';
+
+        }
+
+        add++;
+        if ( add > limit ) {
+
+            var endTime = new Date();
+            var time = Math.floor( ( endTime - startTime ) / 1000 );
+            var min = Math.floor( time / 60 ), sec = ( '0' +  time % 60 ).slice( -2 );
+
+            var anm = ( np == '1' ) ? -6 : 3;
+            $( 'again' ).setAttribute( 'onclick', 'start(' + anm + ')')
+            $( 'miss' ).style.display = ( miss == '' ) ? 'none' : 'block';
+
+            objButton.innerHTML = ( miss == '' ) ? '' : '保存';
+            if ( miss != '' ) objButton.setAttribute( 'onclick', 'save()' );
+
+            miss.push( '@' );
+
+            $( 'result' ).className = 'wide next';
+            objPrev.className = 'wide prev';
+
+            $( 'recorrect' ).innerHTML = correct;
+            $( 'rerate' ).innerHTML = Math.floor( correct / limit * 100 );
+            $( 'retime' ).innerHTML = min + ':' + sec;
+            $( 'reall' ).innerHTML = '/ ' + limit;
+
+            setData( 4, sub, limit, time );
+
+            if ( onGoal ) {
+
+                gGoal = ( gMode == 1 ) ? gGoal - limit : gGoal - time;
+                var objRemain = $( 'remain' );
+
+                if ( gGoal <= 0 ) {
+
+                        dialog( '目標を達成しました。' );
+
+                        objRemain.innerHTML = '目標';
+                        onGoal = 0;
+
+                } else {
+
+                    ( gMode == 1 ) ? objRemain.innerHTML = 'あと ' + gGoal + ' 問' :
+                    objRemain.innerHTML = 'あと ' + Math.floor( gGoal / 3600 )  + ':' + ( '0' + Math.floor( gGoal % 3600 / 60 ) ).slice( -2 );
+
+                }
+
+            }
+
+        } else {
+
+            var q, j = 0;
+            right = 1, row2 = data2[add-1];
+
+            objColor.style.height = '';
+            objColor.className = 'list-wrap l';
+            objInput.style.display = 'none';
+            objButton.innerHTML = 'スキップ';
+            objNumber.innerHTML = add;
+            objQuest.innerHTML = row2[rep[0]];
+            objNext.className = 'wide next';
+            objPrev.className = 'wide prev';
+
+            word = row2[rep[0]].replace( /\r?\n/g,'' );
+            word = word.replace( /<rb>.*<\u002frb>/g, '' );
+            word = word.replace( /<("[^"]*"|'[^']*'|[^'">])*>/g,'' );
+            word = word.replace( /（.*）/g, '' );
+
+            if ( row2[6] == '1' ) objCheck.checked = true;
+
+            switch ( valMode  ) {
+
+                case 1 :
+                    var shuffle = FY( data[1] ), select = FY( 4 ), option = row2[1].split( '^' );
+
+                    for ( var i = 0; i < 4; i++ ) {
+
+                        if ( option.length == 4 ) {
+
+                            q = option[select[i]];
+                            if ( select[i] == 0 ) numAnswer = i, objCorrect.innerHTML = q;
+
+                        } else {
+
+                            if ( select[i] == 0 ) {
+
+                                q = row2[rep[1]], numAnswer = i;
+                                objCorrect.innerHTML = q;
+
+                            }  else {
+
+                                if ( data4[shuffle[i]][1] == data2[add-1][1] ) j++;
+                                q = data4[shuffle[i+j]][rep[1]].split( '^' )[0];
+
+                            }
+
+                        }
+
+                        objAnswer.innerHTML += '<p onclick="check(' + i + ')">' + q + '</p>';
+
+                    }
+
+                    break;
+
+                case 2 :
+                    objColor.style.height = 'calc( 100vh - 160px )';
+                    objColor.className = 'list-wrap l apper-btn';
+
+                    break;
+
+                case 3 :
+                    objCorrect.innerHTML = row2[1].split( '^' )[0];
+                    objCorrect.className = 'show';
+                    objInput.style.display = 'block';
+
+                    break;
+
+            }
+
+            if ( valTime != 1 ) {
+
+                objBar.style.opacity = '1';
+                objBar.style.animationDuration = '' + ( ( valTime - 1 ) * 5 + 5 ) + 's';
+                objBar.style.animationPlayState = 'running';
+
+                objBar.addEventListener( 'webkitAnimationEnd', function() { check( -1 ); }, false );
+
+            } else {
+
+                objBar.style.opacity = '0';
+
+            }
+
+            objNext.addEventListener( 'webkitAnimationEnd', function() {
+
+                if ( right & valMode == 3 ) objInput.focus();
+
+            }, false );
+
+        }
+
+    }
+
+    function FY( code ) {
+
+        var arr = [];
+        for ( var i = 0; i < code; i++ ) arr[i] = i;
+
+        for( var i = code - 1; i > 0; i-- ) {
+
+            var j = Math.floor( Math.random() * ( i + 1 ) );
+            var tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+
+        }
+
+        return arr
+
+    }
+</script>
+
+</html>

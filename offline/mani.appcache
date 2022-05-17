@@ -1,0 +1,16 @@
+CACHE MANIFEST
+# Version: 5
+
+CACHE:
+resource/fonts/Lato.woff
+resource/fonts/NotoSansCJKjp-Light.eot
+resource/fonts/NotoSansCJKjp-Light.ttf
+resource/fonts/NotoSansCJKjp-Light.woff
+resource/noto.css
+resource/style.css
+resource/theme.css
+
+NETWORK:
+resource/che.jpg
+resource/cls.jpg
+resource/eng.jpg

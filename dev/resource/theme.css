@@ -1,0 +1,150 @@
+.dark {
+    background: #282a2f;
+}
+
+/*白*/
+.dark .back p,
+.dark .info,
+.dark .list p,
+.dark .property .title,
+.dark #record .title,
+.dark #record .sample,
+.dark #bar p,
+.dark #xaxis p,
+.dark #title, 
+.dark #title1, 
+.dark #title2,
+.dark .explain,
+.dark #slide .icon,
+.dark #all-wrap p:nth-child(1),
+.dark #all-wrap p:nth-child(1),
+.dark #all-wrap p:nth-child(3),
+.dark #all-wrap p:nth-child(3),
+.dark .dialog-bac {
+    color: #fff;
+}
+
+.dark #answer1 p, 
+.dark #answer2 p {
+    color: #fff;
+    border-top: 1px solid #676767;
+}
+
+.dark #menu c:before {
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #fff;
+}
+
+.dark #slide svg {
+    fill: #fff;
+}
+
+/*濃い灰色*/
+.dark header,
+.dark section,
+.dark footer,
+.dark .back,
+.dark .dialog-bac,
+.dark c,
+.dark #slider,
+.dark #slider:before {
+    background: #4c4e54;
+}
+
+.dark .info:before {
+    background: #828388;
+}
+
+.dark select, .dark input {
+    background: transparent;
+    color: #fff;
+}
+
+ .dark header {
+    box-shadow: 0 16px 32px rgba( 0, 0, 0, .4 );
+}
+
+.dark .list-wrap {
+    background: #55575e;
+}
+
+/*赤*/
+.dark .num p:nth-child(2), 
+.dark .rate p:nth-child(2),
+.dark .back nav p:nth-child(2),
+.dark .score div:nth-child(4),
+.dark .score div:nth-child(5),
+.dark .score div:nth-child(6) {
+    color: #f13069;
+}
+
+.dark #remain,
+.dark .start {
+    background: #f13069;
+}
+
+.dark #line line {
+    stroke: #f13069;
+}
+
+.dark #mark3 {
+    stroke: #f13069;
+}
+
+/*オレンジ*/
+.dark .question div,
+.dark #more,
+.dark a, .dark a:link, .dark a:visited {
+    color: #f13069;
+}
+
+.dark #arrow {
+    border-color: #f13069;
+}
+
+.dark #bar span {
+    background: linear-gradient( #fc6773, #fa9276 );
+}
+.dark #record .sample b:nth-child(1) {
+    color: #fc6773cc;
+}
+.dark #record .sample b:nth-child(2) {
+    color: #f13069;
+}
+
+/*薄い灰色*/
+.dark .num p:nth-child(1),
+.dark .rate p:nth-child(1),
+.dark .num p:nth-child(3),
+.dark .rate p:nth-child(3),
+.dark .score div:nth-child(1),
+.dark .score div:nth-child(2),
+.dark .score div:nth-child(3),
+.dark .list span {
+    color: #979799;
+}
+
+.dark #list p:active, 
+.dark #word p:active,
+.dark #listre p:active,
+.dark #xaxis p:active,
+.dark #slide .icon:active,
+.dark #all-wrap:active,
+.dark a:active {
+    background: #fff2;
+}
+
+.dark #all-wrap:active {
+    background: #fff8;
+}
+.dark #all-wrap p:active {
+    background: none;
+}
+
+.dark .on2 {
+    background: #00000066;
+
+}
+.dark .split {
+    stroke: #fff3;
+}

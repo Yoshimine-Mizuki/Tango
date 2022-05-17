@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html manifest="mani.appcache">
+
+<head>
+    <base href="http://tango-card.cf/">
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1">
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='#3a8bbb'>
+    <meta name='apple-mobile-web-app-title' content="Seventeen's">
+    <link rel='apple-touch-startup-image' href='resource/startup.png' media='( device-width: 320px ) and ( device-height: 568px ) and ( -webkit-device-pixel-ratio: 2 )'>  
+    <link rel='apple-touch-icon' href='resource/icon.jpg'>
+    <link rel='stylesheet' href='resource/noto.css'>
+    <link rel='stylesheet' href='resource/style.css'>
+    <link rel='stylesheet' href='resource/theme.css'>
+
+    <title>Seventeen's</title>
+</head>
+
+<body id="body" onload="dif=2;get_data('4,0');" ontouchend>
+
+    <input type="checkbox" class="btn" id="checked" onclick="slideMenu( this.checked )">
+    <label class="menu-btn" for="checked">
+        <span class="hum top"></span>
+        <span class="hum middle"></span>
+        <span class="hum bottom"></span>
+    </label>
+
+    <section id="main">
+        <header class="question">
+            <div onclick="start(6)">戻る</div>
+            <p id="title2"></p>
+            <div id="btn" onclick="change()">スキップ</div>
+        </header>
+
+        <section id="list1" class="wide prev">
+            <div id="bar1" class="bar"></div>
+            <div class="list">
+                <div class="list-wrap l" id="color1" onclick="speech()">
+                    <p id="cnt1">-</p>
+                    <div id="quest1"></div>
+                    <div id="answer3"></div>
+                    <div id="explain1"></div>
+                    <div id="apper1" onclick="apper()">スライドして答えを表示<span class="apper-btn"></span></div>
+
+                    <form class="text" id="text1" onsubmit="return false;">
+                        <input id="input1" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" onkeypress="onkey()">
+                        <button type="submit" style="display:none;"></button>
+                        <span class="barr"></span>
+                    </form>
+
+                    <div id="font1" onclick="slider()">
+                        <svg width="18" height="18" viewBox="0 0 24 24">
+                            <path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12.75 4h-1.5L6.5 15h2.1l.9-2.2zM12 5.98L13.87 11h-3.74L12 5.98z"/>
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                        </svg>
+                    </div>
+                    <input type="checkbox" id="checked1" onclick="mark( this.checked )" style="display: none">
+                        <label id="check1" for="checked1">
+                            <span style="position: absolute;top: -7px;right: -7px;"><svg width="30" height="30">
+                                <g><path id="mark1" d="m9.28798,14.93603l3.67804,3.71003l7.48401,-7.42005"/></g>
+                            </svg></span>
+                        </label>
+                    <p id="status1"></p>
+                </div>
+                <p id="crtans1"></p>
+                <div id="marking1">
+                    <div class="mark-cor" onclick="answer(1)">正解</div>
+                    <div class="mark-unc" onclick="answer(0)">不正解</div>
+                </div>
+            </div>
+            <div id="answer1">
+            </div>
+        </section>
+
+        <section id="list2" class="wide prev">
+            <div id="bar2" class="bar"></div>
+            <div class="list">
+                <div class="list-wrap l" id="color2"  onclick="speech()">
+                    <p id="cnt2">-</p>
+                    <div id="quest2"></div>
+                    <div id="answer4"></div>
+                    <div id="explain2"></div>
+                    <div id="apper2" onclick="apper()">スライドして答えを表示<span class="apper-btn"></span></div>
+
+                    <form class="text" id="text2" onsubmit="return false;">
+                        <input id="input2" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" onkeypress="onkey()">
+                        <button type="submit" style="display:none;"></button>
+                        <span class="barr"></span>
+                    </form>
+
+                    <div id="font2" onclick="slider()">
+                        <svg width="18" height="18" viewBox="0 0 24 24">
+                            <path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12.75 4h-1.5L6.5 15h2.1l.9-2.2zM12 5.98L13.87 11h-3.74L12 5.98z"/>
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                        </svg>
+                    </div>
+                    <input type="checkbox" id="checked2" onclick="mark( this.checked )" style="display: none">
+                        <label id="check2" for="checked2">
+                            <span style="position:absolute;top:-7px;right:-7px;"><svg width="30" height="30">
+                                <g><path id="mark2" d="m9.28798,14.93603l3.67804,3.71003l7.48401,-7.42005"/></g>
+                            </svg></span>
+                        </label>
+                    <p id="status2"></p>
+                </div>
+                <p id="crtans2"></p>
+                <div id="marking2">
+                    <div class="mark-cor" onclick="answer(1)">正解</div>
+                    <div class="mark-unc" onclick="answer(0)">不正解</div>
+                </div>
+            </div>
+            <div id="answer2">
+            </div>
+        </section>
+
+        <div id="slider"><input class="range" type="range" min="14" max="72" value="18" oninput="slider(this.value)"></div>
+
+        <section id="result">
+            <div class="list"><div class="list-wrap">
+                <p style="padding:16px;text-align:center;">成績</p>
+                <nav class="score">
+                    <div>正解数</div>
+                    <div>正解率</div>
+                    <div>所要時間</div>
+                    <div id="recorrect"></div>
+                    <div id="rerate"></div>
+                    <div id="retime"></div>
+                    <div id="reall"></div>
+                    <div>%</div>
+                </nav>
+                <div class="pause">
+                    <a onclick="start(3)">もう一度</a>
+                    <a onclick="start(9)" id="miss">間違いなおし</a>
+                </div>
+                <div id="listre"></div>
+            </div></div>
+        </section>
+
+        <div class="back-bar" onclick="start(6)"></div>
+        <div class="next-bar" onclick="change()"></div>
+        <div id="next-button" onclick="change()"></div>
+    </section>
+
+    <section id="set">
+        <header class="question">
+            <div onclick="start(5)">戻る</div>
+            <p id="title1"></p>
+        </header>
+
+        <div class="list i">
+            <div class="list-wrap sel con">
+                <p class="big1">設定</p>
+                <select id="time2">
+                    <option disabled>制限時間を選択</option>
+                    <option selected>なし</option>
+                    <option>10 秒</option>
+                    <option>15 秒</option>
+                    <option>20 秒</option>
+                    <option>25 秒</option>
+                    <option>30 秒</option>
+                </select>
+                <select id="num2">
+                </select>
+                <select id="method2">
+                    <option disabled>出題方法を選択</option>
+                    <option selected>すべて</option>
+                    <option>未達成のみ</option>
+                    <option>チェックのみ</option>
+                    <option>苦手のみ</option>
+                </select>
+                <select class="big2" id="mode2">
+                    <option disabled>学習方法を選択</option>
+                    <option selected>四択問題</option>
+                    <option>フラッシュカード</option>
+                    <option>スペルチェック</option>
+                </select>
+                <select id="reverse2">
+                    <option disabled>出題方法を選択</option>
+                    <option selected>単語を出題</option>
+                    <option>意味を出題</option>
+                </select>
+            </div>
+
+            <div id="info" class="info" onclick="info()"></div>
+
+            <div id="word" class="list-wrap">
+            </div>
+        </div>
+
+        <footer>
+            <div class="start" onclick="start(3)">スタート</div>
+        </footer>
+        
+        <div class="back-bar" onclick="start(5)"></div>
+    </section>
+    
+    <section id="choice">
+        <header class="question">
+            <div onclick="start(4)">戻る</div>
+            <p id="title">範囲の選択</p>
+        </header>
+        
+        <div class="list">
+            <div class="list-wrap sel con">
+                <p class="big1">設定</p>
+                <select id="time1">
+                    <option disabled>制限時間を選択</option>
+                    <option selected>なし</option>
+                    <option>10 秒</option>
+                    <option>15 秒</option>
+                    <option>20 秒</option>
+                    <option>25 秒</option>
+                    <option>30 秒</option>
+                </select>
+                <select id="num1">
+                    <option disabled>問題数を選択</option>
+                    <option selected>すべて</option>
+                    <option>5 問</option>
+                    <option>10 問</option>
+                    <option>15 問</option>
+                    <option>20 問</option>
+                    <option>25 問</option>
+                    <option>30 問</option>
+                </select>
+                <select id="method1">
+                    <option disabled>出題方法を選択</option>
+                    <option selected>すべて</option>
+                    <option>未達成のみ</option>
+                    <option>チェックのみ</option>
+                    <option>苦手のみ</option>
+                </select>
+                <select class="big2" id="mode1">
+                    <option disabled>学習方法を選択</option>
+                    <option selected>四択問題</option>
+                    <option>フラッシュカード</option>
+                    <option>スペルチェック</option>
+                </select>
+                <select id="reverse1">
+                    <option disabled>出題方法を選択</option>
+                    <option selected>単語を出題</option>
+                    <option>意味を出題</option>
+                </select>
+            </div>
+
+            <div style="border-bottom: 1px solid #c4ccd4;"></div>
+
+            <div class="list-wrap sel">
+                <select id="select">
+                </select>
+                <a onclick="start(-3)">スタート</a>
+            </div>
+
+            <div class="list-wrap sel">
+                <div class="float">
+                    <input id="input3" type="tel"><p>~</p><input id="input4" type="tel">
+                </div>
+                <a onclick="start(-6)">スタート</a>
+            </div>
+        </div>
+
+        <div class="back-bar" onclick="start(4)"></div>
+    </section>
+
+    <section id="menu">
+        <header>
+            <div class="property" onclick="cmd(0)">
+                <div id="cover"></div>
+
+                <div class="title">
+                    <p id="name"></p>
+                    <nav>
+                        <div class="num">
+                            <p>達成数</p>
+                            <p id="correct"></p>
+                            <p id="all"></p>
+                        </div>
+                        <div class="rate">
+                            <p>達成率</p>
+                            <p id="rate"></p>
+                            <p>%</p>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <div id="record">
+                <p class="title">アクティビティ</p>
+                <p class="sample"><b>■</b> 問題数<b>―</b> 時間</p>
+                
+                <div id="graph" class="graph">
+                    <div>
+                        <svg id="" width="100%" height="100%">
+                            <line x1="0%" y1="17px" x2="100%" y2="17px" class="split" />
+                            <line x1="0%" y1="49px" x2="100%" y2="49px" class="split" />
+                            <line x1="0%" y1="81px" x2="100%" y2="81px" class="split" />
+                            <line x1="0%" y1="113px" x2="100%" y2="113px" class="split" />
+                            <line x1="0%" y1="145px" x2="100%" y2="145px" class="split" />
+                        </svg>
+                    </div>
+                    <span id="figure">
+                        <span id="bar"></span>
+                        <span class="line"><svg id="line" width="100%" height="100%"></svg></span>
+                        <span id="xaxis"></span>
+                    </span>
+                    <span id="detail" class="detail">
+                        <p id="date">0000 / 00 / 00</p>
+                        <nav>
+                            <span class="num">
+                                <p class="white">問題数</p>
+                                <p id="num-qu">--</p>
+                            </span>
+                            <span class="rate">
+                                <p class="white">時間</p>
+                                <p id="time">--</p>
+                            </span>
+                        </nav>
+                        <p id="close" onclick="detail(0)">とじる</p>
+                    </span>
+                </div>
+
+                <div id="remain" onclick="goal()">目標</div>
+            </div>
+
+            <div id="more" onclick="more()">ひらく</div>
+            <span id="arrow"></span>
+        </header>
+
+        <div class="list h"><div id="list" class="list-cover">
+        </div></div>
+        
+        <div class="back-bar" onclick="cmd(0)"></div>
+    </section>
+
+    <main id="sub">
+        <div id="loader">
+            <svg class="circular">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"></circle>
+            </svg>
+        </div>
+    </main>
+
+    <div id="slide">
+        <div id="all-wrap">
+            <nav id="all-nav">
+                <div class="num"><p>達成数</p><p id="all-cor"></p><p id="all-all"></p></div>
+                <div class="rate"><p>達成率</p><p id="all-rate"></p><p id="all-per">%</p></div>
+            </nav>
+        </div>
+
+        <p class="icon etc" onclick="subject(0)"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M4 15h16v-2H4v2zm0 4h16v-2H4v2zm0-8h16V9H4v2zm0-6v2h16V5H4z"></path></svg>すべて</p>
+        <p class="icon tag" onclick="subject(1)"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>英語</p>
+        <p class="icon tag" onclick="subject(2)"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>国語</p>
+        <p class="icon tag" onclick="subject(3)"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>理科</p>
+        <p class="icon tag" onclick="subject(4)"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>社会</p>
+    </div>
+
+    <div id="menuBar">
+        <div class="item" id="mAdd" onclick="dialog('追加')">追加</div>
+        <div class="item" id="mEdit" onclick="dialog('編集')">編集</div>
+        <div class="item" id="mDel" onclick="dialog('削除')">削除</div>
+    </div>
+
+    <div id="goal">
+        <div class="dialog-bac">
+            <p>目標を設定</p>
+
+            <div style="display:flex;padding:0 16px;">
+                <input id="gInput" style="width:60%;margin-right:16px" type="tel">
+                <select id="gSelect" style="width:40%">
+                    <option disabled>目標を設定</option>
+                    <option>問</option>
+                    <option>分</option>
+                    <option>時間</option>
+                </select>
+            </div>
+
+            <div style="display:flex;justify-content:space-around;max-width:240px;margin:auto;">
+                <a onclick="goal(1)">開始</a>
+                <a id="cancel" style="display:none" onclick="goal(0)">中止</a>
+                <a onclick="goal()">閉じる</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="dialog">
+        <div class="dialog-wrap" onclick="dialog()"></div>
+        <div class="dialog-bac">
+            <p id="cnt3"></p>
+            <input type="checkbox" id="checked3" onclick="mark( this.checked )" style="display:none">
+            <label id="check3" for="checked3" style="border:1px solid #888">
+                <span style="position:absolute;top:-7px;right:-7px"><svg width="30" height="30">
+                    <g><path id="mark3" d="m9.28798,14.93603l3.67804,3.71003l7.48401,-7.42005"/></g>
+                </svg></span>
+            </label>
+            <div id="message"></div>
+            <a onclick="dialog()">OK</a>
+        </div>
+        <div class="back-bar" onclick="dialog2( crntDialog - 1 )"></div>
+        <div class="next-bar" onclick="dialog2( crntDialog + 1 )"></div>
+    </div>
+
+    <iframe id="ifrm" src="http://astrongame.webcrow.jp/post.html" style="display:none"></iframe>
+</body>
+
+<script id="code"></script>
+<script>
+    var element = $( 'main' ), StartX, StartY, MoveX, MoveY;
+
+    element.addEventListener( 'touchstart', function( event ) {
+
+        StartX = event.touches[0].pageX, MoveX = StartX;
+        StartY = event.touches[0].pageY, MoveY = StartY;
+
+    }, false );
+
+    element.addEventListener( 'touchmove', function( event ) {
+
+        if ( ! onSlider ) {
+
+            MoveX = event.changedTouches[0].pageX;
+            MoveY = event.changedTouches[0].pageY;
+
+        }
+
+    }, false );
+
+    element.addEventListener( 'touchend', function( event ) {
+
+        if ( ( valMode == 2 ) && ( StartY > ( MoveY + 80 ) ) ) apper();
+        else if ( StartX > ( MoveX + 80 ) ) change();
+
+    }, false );
+
+    var objGraph = $( 'graph' ), objFigure = $( 'figure' );
+    var StartX2, moveX2, week = 0;
+
+    objGraph.addEventListener( 'touchstart', function( event ) {
+
+        StartX2 = event.touches[0].pageX, moveX2 = StartX2;
+        objFigure.style.transitionDuration = '.4s'
+        
+    }, false);
+
+    objGraph.addEventListener( 'touchmove', function( event ) {
+
+        event.preventDefault();
+
+        if ( ! onDetail ) {
+
+            moveX2 = event.changedTouches[0].pageX;
+            objFigure.style.transform = 'translateX( ' + ( moveX2 - StartX2 ) + 'px )';
+            objFigure.style.opacity = 1 - ( Math.abs( moveX2 - StartX2 ) / 200 );
+
+        }
+
+    }, false);
+    
+    objGraph.addEventListener( 'touchend', function( event ) {
+
+        objFigure.style.opacity = 1;
+
+        if ( Math.abs( moveX2 - StartX2 ) > 80 ) {
+
+            ( StartX2 > moveX2 ) ? week += 7 : week -= 7;
+            objFigure.style.animation = ( StartX2 > moveX2 ) ? 'prevGraph 1s ease' : 'nextGraph 1s ease';
+            graph( week );
+
+            objFigure.addEventListener( 'webkitAnimationEnd', function() {
+                objFigure.style.animation = '';
+                objFigure.style.transform = '';
+                objFigure.style.transitionDuration = '0s'
+            }, false );
+
+        } else {
+
+            objFigure.style.transform = '';
+
+        }
+
+    }, false);
+
+    var objDialog = $( 'dialog' ), StartX3, MoveX3;
+
+    objDialog.addEventListener( 'touchstart', function( event ) {
+
+        StartX3 = event.touches[0].pageX, MoveX3 = StartX3;
+
+    }, false );
+
+    objDialog.addEventListener( 'touchmove', function( event ) {
+
+        MoveX3 = event.changedTouches[0].pageX;
+
+    }, false );
+
+    objDialog.addEventListener( 'touchend', function( event ) {
+
+        if ( StartX3 > ( MoveX3 + 80 ) ) dialog2( crntDialog + 1 );
+        else if ( StartX3 < ( MoveX3 - 80 ) ) dialog2( crntDialog - 1 );
+
+    }, false );
+
+    var onGoal, onDialog, onMore, onSlider, onDetail, up;
+
+    function $( e ) { return document.getElementById( e ); }
+
+    function dialog( mes, code ) {
+
+        var objDialog = $( 'dialog' ), objMessage = $( 'message' );
+
+        if ( ! mes ) {
+
+            objDialog.style.animation = 'fadeOut2 .4s ease forwards';
+            objDialog.className = '';
+
+        } else {
+
+            objDialog.style.animation = 'fade2 .5s ease forwards';
+            objDialog.className = 'on';
+            objMessage.innerHTML = mes;
+            $( 'cnt3' ).style.display = ( code ) ? 'block' : 'none';
+            $( 'check3' ).style.display = ( code ) ? 'block' : 'none';
+
+        }
+
+    }
+
+    function dialog2( num ) {
+
+        if ( ( num < 0 ) || ( num > data2.length ) ) return;
+
+        crntDialog = num;
+        row2 = data2[num].split( '^' );
+
+        if ( typeof fontSize === 'undefined' ) fontSize = ( sub == 1 ) ? '40px' : '24px';
+        var exp = row2[4].replace( /\s+$/g, '' ), exp = ( exp == '' ) ? '' : '<br>' + exp + '<br>';
+        var option = row2[1].split( '%' ), mean = ( option.length > 1 ) ? option[0] : row2[1];
+
+        $( 'cnt3' ).innerHTML = num + 1;
+        $( 'checked3' ).checked = ( row2[3] == '1' ) ? true : false;
+        dialog( '<div style="font-size:' + fontSize + '" onclick="speech(\'' + row2[0] + '\')">' + row2[0] + '</div><br>' + mean + '<br>' + exp, 1 );
+
+    }
+
+    function slideMenu( onSlideMenu ) {
+
+        $( 'sub' ).style.filter = ( onSlideMenu ) ? 'blur( 10px ) opacity( 50% )' : '';
+        $( 'sub' ).style.transform = ( onSlideMenu ) ? 'translateX( 50% ) scale( .9 )' : '';
+        $( 'sub' ).style.overflowY = ( onSlideMenu ) ? 'hidden' : '';
+        $( 'slide' ).style.transform = ( onSlideMenu ) ? 'translateX( 0 )' : '';
+        $( 'menuBar' ).style.transform = ( onSlideMenu ) ? 'translateY( 64px )' : '';
+
+    }
+
+    function dark( code ) {
+
+        $( 'body' ).className = ( code ) ? 'dark' : '';
+
+    }
+
+    function subject( code ) {
+
+        var objSub = $( 'sub' ), allcnt = 0, golcnt = 0;
+        objSub.innerHTML = '<div class="logo"><svg viewBox="0 300 960 600"><use xlink:href="resource/logo.svg#logo"/></svg></div><div class="flip"><input type="checkbox" id="ch" onclick="dark( this.checked )"><label for="ch"></label></div>';
+
+        for ( var i = 0; i < data3.length - 1; i++ ) {
+
+            var row3 = data3[i].split( '/' );
+
+            if ( ( row3[6] == code ) | ( code == 0 ) ) {
+
+                allcnt += Number( row3[2] ), golcnt += Number( row3[3] );
+
+                objSub.innerHTML += '<div class="back" onclick="cmd(' + ( i + 1 ) + ')"><p>' + row3[0] + '</p><nav><div class="num"><p>達成数</p><p>' + row3[2] + '</p><p>/ ' + row3[3] + '</p></div><div class="rate"><p>達成率</p><p>' + Math.floor( row3[2] / row3[3] * 100 ) + '</p><p>%</p></div></nav></div><div class="cover" style="background: url(resource/' + row3[1] + '.jpg) 0% 0% / cover no-repeat;"></div>';
+
+            }
+
+        }
+
+        objSub.innerHTML += '<p class="copyright">Seventeen\'s ver 2.0</p>';
+
+        $( 'all-cor' ).innerHTML = allcnt, $( 'all-all' ).innerHTML = '/ ' + golcnt;
+        $( 'all-rate' ).innerHTML = Math.floor( allcnt / golcnt * 100 );
+        $( 'all-nav' ).style.animation = 'fade 1s ease';
+
+        $( 'all-nav' ).addEventListener( 'webkitAnimationEnd', function() {
+            $( 'all-nav' ).style.animation = '';
+        }, false );
+
+    }
+
+    function detail( date, num, time ) {
+
+        onDetail ^= 1;
+        
+        if ( onDetail ) {
+
+            $( 'detail' ).className = 'detail title on2';
+            $( 'date' ).innerHTML = date;
+            $( 'num-qu' ).innerHTML = num;
+            $( 'time' ).innerHTML = Math.floor( num * 3 / 60 ) + ':' + ( '00' + ( num * 3 % 60 ) ).slice(-2);
+
+        } else $( 'detail' ).className = 'detail title';
+
+    }
+
+    function goal( code ) {
+
+        onDialog ^= 1;
+        var objGoal = $( 'goal' ), objCancel = $( 'cancel' ), objRemain = $( 'remain' );
+
+        if ( onDialog ) {
+
+            objGoal.style.animation = 'fade2 .5s ease forwards';
+            objGoal.className = 'on';
+
+            objCancel.style.display = ( onGoal ) ? 'block' : 'none';
+
+        } else {
+
+            objGoal.style.animation = 'fadeOut2 .4s ease forwards';
+            objGoal.className = '';
+
+            switch ( code ) {
+
+                case 0 :
+                    objRemain.innerHTML = '目標';
+
+                    onGoal = code;
+                    break;
+
+                case 1 :
+                    var valInput = $( 'gInput' ).value - 0;
+                    gMode = $( 'gSelect' ).selectedIndex;
+
+                    gGoal = ( gMode == 1 ) ?  valInput : ( gMode == 2 ) ? valInput * 60 : valInput * 3600;
+                    
+                    ( gMode == 1 ) ? objRemain.innerHTML = 'あと ' + gGoal + ' 問' :
+                    objRemain.innerHTML = 'あと ' + Math.floor( gGoal / 3600 )  + ':' + ( '0' + gGoal % 3600 / 60 ).slice( -2 );
+
+                    onGoal = code;
+                    break;
+
+            }
+
+        }
+
+    }
+
+    function more( code ) {
+
+        onMore ^= 1, week = 0;
+        $( 'record' ).style.animation = ( onMore ) ? 'open .8s ease forwards' : 'close .5s ease forwards';
+        $( 'more' ).innerHTML = ( onMore ) ? 'とじる' : 'ひらく';
+        $( 'arrow' ).style.transform = ( onMore ) ? 'rotate(135deg) translateY(-6px)' : 'rotate(-45deg)';
+        $( 'menuBar' ).style.transform = ( onMore ) ? 'translateY(64px)' : '';
+
+        if ( onMore ) graph( 0 );
+
+    }
+
+    function graph( code ) {
+
+        var bar = $( 'bar' ), line = $( 'line' ), xAxis = $( 'xaxis' );
+        var height = new Array(), width = 100 / 6;
+        bar.textContent = null, line.textContent = null;
+
+        var date = new Date();
+        xAxis.textContent = null;
+        date.setDate( date.getDate() - 6 + code );
+
+        for ( var i = 0; i < 7; i++ ) {
+
+            height[i] = Math.floor( ( Math.random() * ( ( 144 + 1 ) - 64 ) ) + 64 );
+            bar.innerHTML += '<span style="height:' + height[i] + 'px;bottom:-' + ( 160- height[i] ) +'px;animation-delay:.' + ( i + 3 ) + 's;"><p>' + height[i] + '</p></span>';
+
+        }
+
+        var year = date.getFullYear(), mon = date.getMonth() + 1, day = date.getDate();
+        var ymd = year + ' / ' + ( '0' + mon ).slice( -2 ) + ' / ' + ( '0' + day ).slice( -2 );
+        xAxis.innerHTML += '<p onclick="detail(\'' + ymd + '\',' + height[0] + ')">' + mon + ' / ' + day + '</p>';
+
+        for ( var i = 0; i < 6; i++ ) {
+
+            line.innerHTML += '<line style="animation-delay:.' + ( i + 4 ) + 's;" x1="' + width * i + '%" y1="' + ( 140 - height[i] ) + 'px" x2="' + width * ( i + 1 ) + '%" y2="' + ( 140 - height[ i + 1 ] ) + 'px"></line>';
+
+            date.setDate( date.getDate() + 1 );
+            var year = date.getFullYear(), mon = date.getMonth() + 1, day = date.getDate();
+            var ymd = year + ' / ' + ( '0' + mon ).slice( -2 ) + ' / ' + ( '0' + day ).slice( -2 );
+            xAxis.innerHTML += '<p onclick="detail(\'' + ymd + '\',' + height[i + 1] + ')">' + day + '</p>';
+
+        }
+
+    }
+
+    function accordion( code ) {
+
+        var judge = $( 'm' + code ).checked;
+        if ( judge ) $( 'n' + code ).classList.remove( 'closed' );
+        else $( 'n' + code ).classList.add( 'closed' );
+
+    }
+
+    function speech( sp ) {
+
+        var msg = new SpeechSynthesisUtterance();
+        msg.lang = 'ja-JP';
+
+        if ( sub == 1 || sub == 4 ) msg.lang = 'en-US';
+
+        msg.text = ( ! sp ) ? word : sp;
+        speechSynthesis.speak( msg );
+
+    };
+
+    function mark( code ) {
+
+        speechSynthesis.cancel();
+
+        var onof = ( code ) ? 1 : 0;
+        get_data( '3,' + sub + ',' + row2[0] + ',' + onof );
+
+    };
+
+    function slider( val ) {
+
+        if ( ! val ) {
+
+            onSlider ^= 1;
+
+            $( 'slider' ).style.top = ( valMode == 2 ) ? 'calc( 100vh - 70px )' : 'calc( 45vw + 90px )';
+            $( 'slider' ).style.animation = ( onSlider ) ? 'slider_open .4s ease forwards' : 'slider_close .4s ease forwards';
+            if ( right ) objStatus.style.color = ( onSlider ) ? '#485664' : '#fff';
+            objStatus.innerHTML = ( onSlider ) ? fontSize : '';
+
+        } else {
+
+            fontSize = val + 'px';
+
+            $( 'quest1' ).style.fontSize = fontSize;
+            $( 'quest2' ).style.fontSize = fontSize;
+            objStatus.innerHTML = fontSize;
+
+        }
+
+    }
+
+    function  apper() {
+
+        objApper.style.opacity = 0;
+        objAnswer2.style.opacity = 1;
+        objExplain.style.opacity = 1;
+        objAnswer2.style.transform = '';
+        objExplain.style.transform = '';
+        objQuest.style.animation = 'apper .6s ease forwards';
+        objMarking.style.display = 'flex';
+
+    }
+
+    function get_data( send ) {
+
+        var ifrm = $( 'ifrm' ).contentWindow;
+        ifrm.postMessage( send, 'http://astrongame.webcrow.jp/' );
+
+        window.addEventListener( 'message', function( event ) {
+
+            switch ( dif ) {
+
+                case 0 :
+                    data = event.data.split( ',' );
+
+                    $( 'correct' ).innerHTML = data[0];
+                    $( 'all' ).innerHTML = '/ ' + data[1];
+                    $( 'rate' ).innerHTML = Math.floor( data[0] / data[1] * 100 );
+
+                    var obj = $( 'list' ), pageNum = 0, chapNum = 0, adder = '';
+                    obj.style.opacity = '0', obj.innerHTML = '<div class="list-wrap"><p onclick="start(1)">範囲の選択</p></div>';
+                    var allSub = row3[5].split( '@' ); allSub.shift();
+
+                    for ( var i = 3; i < ( data.length - 1 ); i++ ) {
+
+                        row = data[i].split( '/' );
+                        var j = i - 3;
+
+                        if ( pageNum == 0 ) {
+                            if ( opt.length > 2 ) adder += '<input type="checkbox" id="m' + j + '" class="accordion"/><label class="info" onclick="accordion( ' + j + ' )" for="m' + j + '"><c>' + opt[chapNum+1] + '</c></label>';
+                            adder += '<div id="n' + j + '" class="list-wrap">';
+                        }
+
+                        adder += '<p onclick="start(2,' + j + ')">' + row[0] + '<span>' + row[1] + ' / ' + row[2] + '</span></p>';
+
+                        pageNum += Number( row[2] );
+                        if ( allSub[chapNum] <= pageNum ) {
+                            pageNum = 0, chapNum++, adder += '</div>';
+                        }
+
+                    }
+
+                    obj.innerHTML += adder;
+
+                    obj.style.opacity = '1';
+
+                    break;
+
+                case 1 :
+                    data_ori = event.data.replace(/\r?\n/,'').split( '#' );
+                    data2 = data_ori[2].replace(/\r?\n/,'').split( '@' );
+                    dif = -1, add = 0, correct = 0, miss = '', nomiss = '', right = 0;
+
+                    $( 'result' ).className = 'wide prev';
+                    $( 'list2' ).className = 'wide prev';
+                    $( 'btn' ).setAttribute( 'onclick', 'change()');
+                    $( 'listre' ).textContent = null;
+
+                    limit = data2.length - 1;
+                    if ( valNum > 1 ) limit = ( valNum - 1 ) * 5;
+                    if ( limit > data2.length ) limit = data2.length - 1;
+
+                    change();
+
+                    startTime = new Date();
+
+                    break;
+
+                case 2 :
+                    data3 = event.data.split( ',' );
+                    
+                    subject( 0 );
+
+                    break;
+
+                case 3 :
+                    data_ori = event.data.replace(/\r?\n/,'').split( '#' );
+                    data2 = data_ori[2].replace(/\r?\n/,'').split( '@' );
+                    data4 = data2, objWord.style.opacity = '0', objWord.innerHTML = null;
+                    $( 'info' ).style.opacity = '0', $( 'info' ).innerHTML = null;
+                    
+                    for ( var i = 0; i <= ( quest - 1 ); i++ ) {
+
+                        var row2 = data2[i].split( '^' ), option = row2[1].split( '%' );
+                        var mean = ( option.length > 1 ) ? option[0] : row2[1];
+
+                        objWord.innerHTML += '<p onclick="dialog2(' + i + ')">' + row2[0] + '<br>' + mean + '<span>' + ( i + 1 ) + '</span></p>';
+
+                    };
+
+                    var numCorrect = data_ori[0], numCheck = data_ori[1];
+                    $( 'info' ).innerHTML = '<c>達成数 : ' + numCorrect + ' ・ チェック数 : ' + numCheck + '</c>';
+
+                    objWord.style.opacity = '1';
+                    $( 'info' ).style.opacity = '';
+
+                    break;
+
+            }
+
+        }, false );
+
+    }
+
+    function cmd( code ) {
+
+        dif = 0, sub = code;
+        if ( sub != 0 ) row3 = data3[sub - 1].split( '/' );
+
+        var cover = $( 'cover' ), name = $( 'name' );
+
+        cover.style.background = 'url(resource/' + row3[1] + '.jpg) no-repeat';
+        cover.style.backgroundSize = 'cover';
+        name.innerHTML = row3[0];
+
+        opt = row3[4].split( '@' );
+        opt.unshift( 'すべて' );
+        all = row3[5].split( '@' );
+
+        var menu = $( 'menu' ), edit = $( 'mEdit' ), del = $( 'mDel' );
+
+        if ( code != 0 ) {
+
+            menu.className = 'open';
+            edit.style.opacity = '1';
+            del.style.opacity = '1';
+
+            $( 'select' ).innerHTML = '';
+
+            for ( var i = 0; i < opt.length; i++ ) $( 'select' ).innerHTML += '<option>' + opt[i] +'</option>';
+
+            get_data( '0,' + sub );
+
+        } else {
+
+            menu.className = 'close';
+            edit.style.opacity = '.3';
+            del.style.opacity = '.3';
+
+            if ( onMore ) more();
+
+        }
+
+    };
+
+    function start( toggle, num, sel ) {
+
+        if ( toggle < 0 ) title[0] = "選択された範囲";
+
+        switch ( toggle % 3  ) {
+
+            case 1 :
+                var element = $( 'choice' );
+                np = '1';
+
+                up ^= 1;
+                $( 'menuBar' ).style.transform = ( up ) ? 'translateY(64px)' : '';
+                break;
+
+            case 2 :
+                var element = $( 'set' );
+                np = '2', dif = 3;
+
+                up ^= 1;
+                $( 'menuBar' ).style.transform = ( up ) ? 'translateY(-48px)' : '';
+                break;
+
+            case 0 :
+                dif = 1;
+
+                var element = $( 'main' );
+                $( 'title2' ).innerHTML = title[0];
+
+                valTime = $( 'time' + np ).selectedIndex;
+                valNum = $( 'num' + np ).selectedIndex;
+                valMeth = $( 'method' + np ).selectedIndex;
+                valMode = $( 'mode' + np ).selectedIndex;
+                valRev = $( 'reverse' + np ).selectedIndex;
+
+                rep = ( valRev % 2 ) ? [ 0, 1 ] : [ 1, 0 ];
+
+                if ( typeof fontSize === 'undefined' ) {
+
+                    if ( valRev % 2 ) fontSize = ( sub == 1 ) ? '40px' : '24px';
+                    else fontSize = '16px';
+
+                }
+
+                $( 'quest1' ).style.fontSize = fontSize;
+                $( 'quest2' ).style.fontSize = fontSize;
+
+                var opa = ( valMode == 3 ) ? [ '0', '1' ] : [ '1', '0' ];
+
+                $( 'quest1' ).style.opacity = opa[0];
+                $( 'quest2' ).style.opacity = opa[0];
+                $( 'text1' ).style.opacity = opa[1];
+                $( 'text2' ).style.opacity = opa[1];
+
+                break;
+
+        }
+
+        element.className = ( toggle < 4 ) ? 'open' : 'close';
+
+        if ( toggle == 2 ) {
+
+            cnt = 1;
+
+            for ( var i = 0; i < num ; i++ ) {
+
+                var row = data[i+3].split( '/' );
+                cnt = cnt + ( row[2] - 0 );
+
+            };
+
+            var row = data[num+3].split( '/' );
+            quest = row[2]; $( 'num2' ).innerHTML = '<option disabled>問題数を選択</option><option selected>すべて</option>';
+
+            for ( var i = 0; i < ( ( quest / 5 ) - 1 ); i++ ) {
+
+                if ( typeof valNum !== 'undefined' )
+                    var sel = ( i == ( valNum - 2 ) ) ? 'selected' : '';
+
+                $( 'num2' ).innerHTML += '<option ' + sel + '>' + ( ( i + 1 ) * 5 ) +' 問</option>';
+
+            }
+
+            title = data[ num + 3 ].split( '/' );
+            $( 'title1' ).innerHTML = title[0];
+
+            objWord = $( 'word' );
+            objWord.style.opacity = '0';
+
+            get_data( '1,' + sub + ',' + cnt + ',' + quest + ',4' );
+
+        }
+
+        if ( toggle == -9 ) {
+                dialog( '使用できません。' );
+        }
+
+        if ( toggle == -6 ) {
+
+            var input1 = $( 'input3' ).value - 0;
+            var input2 = $( 'input4' ).value - 0;
+
+            quest = ( input2 - input1 ) + 1;
+
+            if ( quest < 5 ) {
+
+                element.className = '';
+                dialog( '5問以上選択してください。' );
+
+            } else {
+
+                cnt = input1;
+                get_data( '1,' + sub + ',' + cnt + ',' + quest + ',' + valMeth + ',' + valNum );
+
+            }
+
+        }
+
+        if ( toggle == -3 ) {
+
+            var comSelect = $( 'select' );
+            valSelect = comSelect.selectedIndex - 0;
+
+            cnt = 1;
+            quest = all[valSelect];
+
+            if ( valSelect > 0 )
+                for ( var i = 1; i < valSelect ; i++ ) cnt = cnt + ( all[i] - 0 );
+
+            get_data( '1,' + sub + ',' + cnt + ',' + quest + ',' + valMeth );
+
+        }
+
+        if ( toggle == 3 ) {
+
+
+            $( 'menuBar' ).style.transform = 'translateY(64px)';
+
+            get_data( '1,' + sub + ',' + cnt + ',' + quest + ',' + valMeth + ',' + valNum );
+
+        }
+
+        if ( toggle == 6 ) {
+
+            dif = 0;
+            get_data( '0,' + sub );
+
+            data2 = data4;
+
+        }
+
+        if ( toggle == 9 && miss != '' ) {
+
+            element.className = 'open';
+
+            $( 'result' ).className = 'wide prev';
+            $( 'list2' ).className = 'wide prev';
+            $( 'btn' ).setAttribute( 'onclick', 'change()');
+            $( 'listre' ).textContent = null;
+            $( 'title2' ).innerHTML = '間違いなおし';
+            
+            data2 = ( miss + nomiss ).split( '@' );
+            len = miss.split( '@' ); limit = len.length - 1;
+            dif = -2, add = 0, correct = 0, miss = '', right = 0;
+
+            change();
+
+            startTime = new Date();
+
+        }
+
+    };
+
+    function check( code ) {
+
+        ( numAnswer == code ) ? answer( 1 ) : answer( 0 );
+
+    };
+
+    function onkey() {
+
+        if ( event.keyCode == 13 ) {
+
+            document.activeElement.blur();
+
+            ( word.toLowerCase() == objInput.value.toLowerCase() ) ? answer( 1 ) : answer( 0 );
+
+        }
+
+        return event.keyCode != 13;
+
+    }
+
+    function answer( code ) {
+
+        if ( onSlider ) slider();
+
+        if ( right ) {
+
+            right = 0;
+            $( 'btn' ).innerHTML = '次へ';
+
+            if ( valTime != 1 ) objBar.style.animationPlayState = 'paused';
+
+            if ( code ) {
+
+                var color = '#43e97b', name = 'wide next', status = '正解', result = '○';
+
+                get_data( '2,' + sub + ',' + row2[0] );
+
+                correct++;
+                nomiss += data2[add-1] + '@';
+
+            } else {
+
+                var color = '#e91e63', name = 'wide shake', status = '不正解', result = '×';
+                miss += data2[add-1] + '@';
+
+            }
+
+            objColor.style.background = color;
+            objNumber.style.color = '#fff';
+            objQuest.style.color = '#fff';
+            objAnswer2.style.color = '#fff';
+            objExplain.style.color = '#fff';
+            objLabel.style.border = '1px solid #fff';
+            objMark.style.stroke = '#fff';
+            objFont.style.fill = '#fff';
+            objInput.style.color = '#fff';
+            objInput.style.borderBottomColor = '#fff';
+            objCorrect.className = 'show';
+            objNext.className = name;
+            objStatus.innerHTML = status;
+            // $( 'next-button' ).classList.add( 'n-active' );
+            if ( valMode == 3 ) objColor.className = 'list-wrap l rotate';
+
+            var option = row2[1].split( '%' ), mean = ( option.length == 4 ) ? option[0] : row2[1];
+            objList.innerHTML += '<p onclick="dialog2(' + ( add - 1 ) + ')">' + row2[0] + '<br>' + mean + '<span style="color:' + color + ';">' + result + '</span></p>';
+
+            if ( row2[4] != '' && valMode != 2 ) {
+                objAnswer.innerHTML = '<div class="explain">' + row2[4] + '</div>';
+                objAnswer.className = 'up';
+
+            }
+
+        }
+
+    }
+
+    function change() {
+
+        if ( add > limit ) {
+
+            var key = ( miss == '' ) ? 3 : 9;
+            start( key );
+
+            return;
+
+        }
+
+        if ( onSlider ) slider();
+
+        var arr = ( add % 2 ) ? [1, 2] : [2, 1];
+
+        objColor = $( 'color' + arr[0] );
+        objNumber = $( 'cnt' + arr[0] );
+        objQuest = $( 'quest' + arr[0] );
+        objLabel = $( 'check' + arr[0] );
+        objCheck = $( 'checked' + arr[0] );
+        objFont = $( 'font' + arr[0] );
+        objMark = $( 'mark' + arr[0] );
+        objStatus = $( 'status' + arr[0] );
+        objCorrect = $( 'crtans' + arr[0] );
+        objMarking = $( 'marking' + arr[0] );
+        objAnswer = $( 'answer' + arr[0] );
+        objAnswer2 = $( 'answer' + ( arr[0] + 2 ) );
+        objExplain = $( 'explain' + arr[0] );
+        objApper = $( 'apper' + arr[0] );
+        objInput = $( 'input' + arr[0] );
+        objBar = $( 'bar' + arr[0] );
+        objNext = $( 'list' + arr[0] );
+        objPrev = $( 'list' + arr[1] );
+        objButton = $( 'btn' );
+        objList = $( 'listre' );
+
+        objColor.style.height = '';
+        objColor.style.background = '#fff';
+        objNumber.style.color = '#888';
+        objQuest.style.color = '#485664';
+        objQuest.style.transform = 'translateY( calc( 22.5vw - 50% ) )';
+        objLabel.style.border = '1px solid #a6b3bf';
+        objMark.style.stroke = '#76b1ff';
+        objAnswer2.style.color = '#485664';
+        objExplain.style.color = '#485664';
+        objFont.style.fill = '#485664';
+        objInput.style.color = '#222';
+        objInput.style.borderBottomColor = '#757575';
+        objMarking.style.display = 'none';
+        objCorrect.className = '';
+        objStatus.innerHTML = '';
+        objAnswer.textContent = null;
+        objAnswer.className = '';
+        objApper.style.display = 'none';
+        objAnswer2.style.opacity = 0;
+        objExplain.style.opacity = 0;
+        objInput.value = '';
+        $( 'next-button' ).classList.remove( 'n-active' );
+
+        if ( right ) {
+
+            miss += data2[add-1] + '@';
+
+            var option = row2[1].split( '%' ), mean = ( option.length == 4 ) ? option[0] : row2[1];
+            objList.innerHTML += '<p onclick="dialog2(' + ( add - 1 ) + ')">' + row2[0] + '<br>' + mean + '<span style="color:#9e9aa5">ー</span></p>';
+
+        }
+
+        var j = 0;
+        if ( add < limit ) row2 = data2[add].split( '^' );
+
+        objCheck.checked = ( row2[3] == '1' ) ? true : false;
+
+        switch ( valMode ) {
+
+                case 1 :
+                    var shuffle = ( limit < 5 ) ? FY( 5 ) : FY( limit );
+                    var select = FY( 4 ), option = row2[rep[1]].split( '%' );
+
+                    for ( var i = 0; i < 4; i++ ) {
+
+                        if ( option.length == 4 ) {
+
+                            q = option[select[i]];
+                            if ( select[i] == 0 ) numAnswer = i, objCorrect.innerHTML = q;
+
+                        } else {
+
+                            if ( select[i] == 0 ) {
+                                var q = row2[rep[1]];
+                                numAnswer = i, objCorrect.innerHTML = q;
+                            }  else {
+                                if ( data2[shuffle[i]] == data2[add] ) j++
+                                var q = data2[shuffle[i+j]].split( '^' )[rep[1]];
+                            }
+
+                        }
+
+                        objAnswer.innerHTML += '<p onclick="check(' + i + ')">' + q + '</p>';
+
+                    }
+
+                    objInput.style.display = 'none';
+
+                    break;
+
+                case 2 :
+                    objAnswer2.innerHTML = row2[rep[1]].split( '^' )[0];
+                    objExplain.innerHTML = row2[4];
+
+                    objApper.style.display = 'block';
+                    objAnswer2.style.transform = 'translateY(20vh)';
+                    objExplain.style.transform = 'translateY(40vh)';
+                    objQuest.style.animation = '';
+                    objQuest.style.transform = 'translateY( calc( 50vh - 128px - 50% ) )';
+                    objColor.style.height = 'calc( 100vh - 160px )';
+
+                    break;
+
+                case 3 :
+                    objCorrect.className = 'show';
+                    objColor.className = 'list-wrap l';
+                    objInput.style.display = 'block';
+
+                    break;
+
+        }
+
+        add++;
+        if ( add > limit ) {
+
+            var endTime = new Date();
+            var time = Math.floor( ( endTime - startTime ) / 1000 );
+            var min = Math.floor( time / 60 );
+            var sec = ( '0' +  time % 60 ).slice( -2 );
+
+            $( 'miss' ).style.display = ( miss == '' ) ? 'none' : 'block';
+            objButton.innerHTML = '';
+
+            $( 'result' ).className = 'wide next';
+            objPrev.className = 'wide prev';
+
+            $( 'recorrect' ).innerHTML = correct;
+            $( 'rerate' ).innerHTML = Math.floor( correct / limit * 100 );
+            $( 'retime' ).innerHTML = min + ':' + sec;
+            $( 'reall' ).innerHTML = '/ ' + limit;
+
+            if ( onGoal ) {
+
+                gGoal = ( gMode == 1 ) ? gGoal - limit : gGoal - time;
+                var objRemain = $( 'remain' );
+
+                if ( gGoal <= 0 ) {
+
+                        dialog( '目標を達成しました。' );
+
+                        objRemain.innerHTML = '目標';
+                        onGoal = 0;
+
+                } else {
+
+                    ( gMode == 1 ) ? objRemain.innerHTML = 'あと ' + gGoal + ' 問' :
+                    objRemain.innerHTML = 'あと ' + Math.floor( gGoal / 3600 )  + ':' + ( '0' + Math.floor( gGoal % 3600 / 60 ) ).slice( -2 );
+
+                }
+
+            }
+
+        } else {
+
+            if ( valTime != 1 ) {
+
+                objBar.style.opacity = '1';
+                objBar.style.animationDuration = '' + ( ( valTime - 1 ) * 5 + 5 ) + 's';
+                objBar.style.animationPlayState = 'running';
+
+                objBar.addEventListener( 'webkitAnimationEnd', function() {
+                    check( -1 );
+                }, false );
+
+            } else {
+
+                objBar.style.opacity = '0';
+
+            }
+
+            var option = row2[rep[0]].split( '%' );
+            objQuest.innerHTML = ( option.length > 1 ) ? option[0] : row2[rep[0]];
+
+            objButton.innerHTML = 'スキップ';
+            objNumber.innerHTML = add;
+            objNext.className = 'wide next';
+            objPrev.className = 'wide prev';
+            right = 1;
+
+            word = row2[rep[0]].replace( /\r?\n/g,'' );
+            word = word.replace( /<rb>.*<\u002frb>/g, '' );
+            word = word.replace( /<("[^"]*"|'[^']*'|[^'">])*>/g,'' );
+            word = word.replace( /（.*）/g, '' );
+
+            objNext.addEventListener( 'webkitAnimationEnd', function() {
+                if ( right & valMode == 3 ) objInput.focus();
+            }, false );
+
+        }
+
+    }
+
+    function FY( code ) {
+
+        arr = new Array();
+        for ( var i = 0; i < code; i++ ) arr[i] = i;
+
+        for( var i = code - 1; i > 0; i-- ) {
+            var j = Math.floor( Math.random() * ( i + 1 ) );
+            var tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+        }
+
+        return arr
+
+    }
+</script>
+
+</html>

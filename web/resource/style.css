@@ -1,0 +1,157 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+
+* {
+    margin: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+body {
+    background: #f8fafc;
+    font-family: 'Noto Sans Japanese', sans-serif;
+}
+
+header {
+    position: relative;
+    overflow: hidden;
+
+    width: 100vw;
+
+    color: #547282;
+}
+
+svg {
+    width: 200px;
+    margin: 32px 50%;
+
+    transform: translateX( -50% );
+}
+.vIsrupIp_11 {
+    stroke: white;
+    stroke-dasharray: 428 430;
+    stroke-dashoffset: 429;
+    animation: vIsrupIp_draw .5s ease forwards;
+    transform: translate3d(0,0,0);
+}
+.vIsrupIp_12 {
+    stroke: white;
+    stroke-dasharray: 3502 3504;
+    stroke-dashoffset: 3503;
+    animation: vIsrupIp_draw 4s ease .6s forwards;
+    transform: translate3d(0,0,0);
+}
+
+.text {
+    font-size: 24px;
+    height: 1.5em;
+    overflow: hidden;
+}
+.p1, .p2, .p3 {
+    transform: translateY( 1.5em );
+
+    font-size: 20px;
+    text-align: center;
+
+    animation: up .8s ease 2s forwards;
+}
+.p2 { animation-delay: 2.4s; animation-duration: .9s; }
+.p3 { animation-delay: 2.8s; animation-duration: 1s; }
+
+.download {
+    opacity: 0;
+
+    width: 144px;
+    margin: 32px auto 64px;
+    padding: 16px;
+
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 16px 32px -8px rgba( 0,0,0,.3 );
+    background: linear-gradient( to left, #2ea7df, #5299fc );
+
+    animation: fade 1s ease 3.6s forwards;
+    transition: .4s ease;
+}
+.download:active {
+    transform: translateY( 4px ) scale( .9 );
+    box-shadow: 0px 8px 16px -4px rgba( 0,0,0,.2 );
+}
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.phone {
+    position: relative;
+    opacity: 0;
+
+    width: 320px;
+    height: 568px;
+    margin: 0 auto 32px;
+
+    border-radius: 32px;
+    box-shadow: 0 8px 32px #00000080;
+    background: rgba(255, 255, 255, .5);
+
+    animation: fade 1s ease 3.8s forwards;
+}
+section {
+    color: #fff;
+}
+section h1 {
+    text-align: center;
+    font-weight: 100;
+}
+section p {
+    padding: 16px;
+    text-align: center;
+}
+.contents {
+  position: relative;
+  overflow: hidden;
+  margin: -360px 0 0;
+  padding: 240px 0;
+}
+.contents:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 80%;
+  margin: 5% -10% 0;
+  background: #6e9cb5;
+  transform: rotate(-5deg);
+  z-index: -1;
+}
+
+footer p {
+    padding: 0 0 32px;
+    color: #547282;
+    text-align: center;
+}
+
+@keyframes vIsrupIp_draw {
+    100% {
+        stroke-dashoffset: 0;
+        transform: translate3d( 0, 0, 0 );
+    }
+}
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY( 1.5em );
+    }
+    to {
+        opacity: 1;
+        transform: translateY( 0 );
+    }
+}
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

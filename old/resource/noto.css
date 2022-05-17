@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Noto Sans Japanese';
+    font-style: normal;
+    font-weight: 300;
+    src: url('fonts/NotoSansCJKjp-Light.eot');
+    src: url('fonts/NotoSansCJKjp-Light.eot?#iefix') format('embedded-opentype'),
+    url('fonts/NotoSansCJKjp-Light.woff') format('woff'),
+    url('fonts/NotoSansCJKjp-Light.ttf')  format('truetype');
+}

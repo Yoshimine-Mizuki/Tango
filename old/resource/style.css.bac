@@ -1,0 +1,606 @@
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(Lato.woff) format('woff');
+}
+
+*:not( input ) {
+    margin: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+body {
+    font-family: 'Noto Sans Japanese', sans-serif;
+    font-weight: 300;
+
+    overflow: hidden;
+
+    animation: fade .6s ease forwards;
+}
+
+header {
+    border-bottom: 1px solid #cfcfd3;
+}
+.logo {
+    opacity: 0;
+
+    width: 240px;
+    height: 71px;
+    margin: 32px auto;
+
+    background: url( logo.png ) no-repeat;
+    background-size: contain;
+
+    animation: down .6s ease .2s forwards;
+}
+
+main {
+    width: calc( 100% - 32px );
+    height: calc( 100vh - 152px);
+
+    padding: 0 16px 16px;
+
+    background: #f0f0f5;
+
+    overflow-x: hidden;
+    overflow-y: scroll; 
+    -webkit-overflow-scrolling: touch;
+}
+.cover {
+    float: left;
+    opacity: 0;
+
+    width: calc( 50% - 8px );
+    height: 60vw;
+    margin: 16px 16px 48px 0;
+
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+
+    animation: up .6s ease .2s forwards;
+}
+.cover:nth-child(2n) {
+    margin: 16px 0px 48px 0;
+}
+.cover p {
+    margin-top: calc( 60vw + 12px );
+    color: #111;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.sys {
+    background: url(sys.jpg) no-repeat;
+    background-size: cover;
+}
+.dou {
+    background: url(dou.jpg) no-repeat;
+    background-size: cover;
+}
+.kob {
+    background: url(kob.jpg) no-repeat;
+    background-size: cover;
+}
+.mad {
+    background: url(mad.jpg) no-repeat;
+    background-size: cover;
+}
+.kan {
+    background: url(kan.jpg) no-repeat;
+    background-size: cover;
+}
+.fe {
+    background: url(fe.jpg) no-repeat;
+    background-size: cover;
+}
+
+section {
+    position: absolute;
+    opacity: 0;
+
+    top: 0;
+    width: 100%;
+    height: 100vh;
+
+    background: #f0f0f5;
+    
+    overflow-x: hidden;
+    transform: translateX( -100% );
+}
+.open {
+    animation: slide .6s ease forwards;
+}
+.close {
+    animation: reSlide .4s ease-in forwards;
+}
+
+.property {
+    display: flex;
+    flex-direction: row;
+
+    position: relative;
+
+    width: 100%;
+    height: 135px;
+    background: #fff;
+}
+.property #cover {
+    width: 72px;
+    height: 104px;
+    margin: 16px;
+
+    border-radius: 4px;
+    box-shadow: none;
+}
+.property .title {
+    padding: 16px 0;
+
+    font-family: 'Lato', 'Noto Sans Japanese', sans-serif;
+}
+.title #name {
+    flex-shrink: 0;
+
+    width: 100%;
+    margin-bottom: 4px;
+
+    font-size: 14px;
+}
+.title nav {
+    display: flex;
+    justify-content: space-between;
+}
+.num, .rate {
+    position: relative;
+
+    width: 100%;
+    height: 78px;
+}
+.num {
+    padding-right: 16px;
+    margin-right: 16px;
+
+    border-right: 1px solid #ceced2;
+}
+.num p:nth-child(1), .rate p:nth-child(1) {
+    color: #666;
+    font-size: 12px;
+}
+.num p:nth-child(2) {
+    color: #4caf50;
+    font-size: 32px;
+}
+.num p:nth-child(3) {
+    position: absolute;
+    right: 16px;
+
+    color: #888;
+}
+#rate {
+    color: #4caf50;
+    font-size: 32px;
+}
+.rate p:nth-child(3) {
+    position: absolute;
+    right: 0;
+    color: #888;
+}
+
+.list {
+    width: calc( 100% - 32px );
+    padding: 0 16px;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+.h {
+    height: calc( 100vh - 136px);
+}
+.list-wrap {
+    position: relative;
+
+    margin: 16px 0;
+    padding: 0 16px;
+
+    font-size: 14px;
+    line-height: 1.5em;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+.l {
+    position: absolute;
+    z-index: 2;
+
+    width: calc( 100% - 64px);
+
+    transition: all .6s ease;
+}
+.list p {
+    padding: 16px 64px 16px 16px;
+    border-bottom: 1px solid #ceced2;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.list p:last-child {
+    border: none;
+}
+.list span {
+    position: absolute;
+
+    right: 32px;
+
+    color: #888;
+}
+#list1, #list2 {
+    opacity: 0;
+    transform: translateX( -100% );
+}
+
+footer {
+    position: absolute;
+
+    bottom: 0;
+    width: 100%;
+
+    background: #fff;
+    border-top: 1px solid #cfcfd3;
+}
+.start {
+    padding: 8px;
+    margin: 8px;
+
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    background: linear-gradient(to left, #4facfe 0%, #00f2fe 100%);;
+    box-shadow: 0 2px 6px rgba(0, 205, 237, .5);
+}
+
+.question {
+    position: relative;
+
+    width: 100%;
+
+    background: #fff;
+    border-bottom: 1px solid #cfcfd3;
+}
+.question div {
+    padding: 16px;
+
+    color: #2196f3;
+}
+.question div:nth-child(2) {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+}
+#btn {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+}
+.bar {
+    position: absolute;
+    opacity: 0;
+
+    top: 0;
+    height: 2px;
+    width: 100%;
+    padding: 0;
+
+    background: #03A9F4;
+
+    animation: count linear;
+    animation-play-state: paused;
+}
+.prev .bar {
+    animation: none;
+}
+#title, #title1, #title2 {
+    position: absolute;
+    
+    top: 0;
+    left: 50%;
+    width: calc( 100% - 200px);
+    margin: 16px 0;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    text-overflow: ellipsis;
+
+    transform: translateX(-50%);
+}
+
+select, input {
+    width: 100%;
+    height: 36px;
+
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    padding: 4px 8px;
+    margin: 16px 0;
+    outline: none;
+
+    -webkit-appearance: none;
+    appearance: none;
+
+    transition: all .3s ease;
+}
+input {
+    width: 50%;
+    height: 26px;
+}
+.float {
+    display: flex;
+    flex-direction: row;
+}
+.float p {
+    padding: 24px 16px 16px;
+    border: none;
+}
+select:focus, input:focus {
+    box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+
+.sel {
+    margin: 16px auto;
+    padding: 0 16px 16px;
+
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 1px 12px rgba(0,0,0,.1);
+}
+a, a:link, a:visited {
+    margin-bottom: 12px;
+    color: #2196f3;
+    text-decoration: none;
+}
+
+.wide {
+    top: 57px;
+    height: calc( 100% - 57px );
+
+    transform: translateX( -100% );
+    -webkit-overflow-scrolling: touch;
+}
+#num1, #num2 {
+    position: absolute;
+
+    left: 0;
+
+    color: #888;
+    border: 0;
+}
+#quest1, #quest2 {
+    padding: 64px 0;
+
+    font-family: 'Lato', 'Noto Sans Japanese', sans-serif;
+    font-size: 40px;
+    color: #000;
+    border: none;
+
+    text-align: center;
+}
+#check1, #check2 {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 16px;
+    right: 16px;
+    border: 1px solid #888;
+    border-radius: 4px;
+}
+#mark1, #mark2 {
+    opacity: 0;
+}
+#checked1:checked ~ #check1 #mark1,
+#checked2:checked ~ #check2 #mark2 {
+    animation: checkmark .4s ease-in-out .2s forwards;
+}
+#status1, #status2 {
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+    padding: 8px;
+
+    color: #fff;
+    border: none;
+    transform: translateX( -50% );
+}
+#crtans1, #crtans2 {
+    position: relative;
+    opacity: 0;
+
+    padding: 16px;
+    margin-top: 165px;
+    text-align: center;
+    white-space: pre-line;
+}
+
+#answer1, #answer2 {
+    position: absolute;
+
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+#answer1 p, #answer2 p {
+    width: calc( 100% - 32px );
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-size: 14px;
+    padding: 18px 16px;
+    border-top: 1px solid #ceced2;
+}
+
+#listre p {
+    padding: 16px 32px 16px 16px;
+    white-space: nowrap;
+}
+#listre span {
+    position: absolute;
+
+    right: 32px;
+
+    line-height: 0px;
+}
+
+.next {
+    animation: next .8s ease forwards;
+}
+.prev {
+    animation: prev .6s ease forwards;
+}
+.show {
+    animation: correct .4s ease forwards;
+}
+.shake {
+    animation: shake 1s ease-in-out forwards;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes down {
+    from {
+        transform: translateY( -72px );
+    }
+    to {
+        opacity: 1;
+        transform: translateY( 0 );
+    }
+}
+@keyframes up {
+    from {
+        transform: translateY( 72px );
+    }
+    to {
+        opacity: 1;
+        transform: translateY( 0 );
+    }
+}
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateX( 100% );
+    }
+    1% {
+        width: 100%;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX( 0 );
+    }
+}
+@keyframes reSlide {
+    0% {
+        opacity: 1;
+        transform: translateX( 0 );
+    }
+    99% {
+        width: 100%;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX( 100% );
+        width: 0px;
+    }
+}
+@keyframes checkmark {
+    from {
+        stroke-dashoffset: 50px;
+        opacity: 1;
+    }
+    to {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+@keyframes next {
+    from {
+        opacity: 0;
+        transform: translateX( 100% );
+    }
+    to {
+        opacity: 1;
+        transform: translateX( 0 );
+    }
+}
+@keyframes prev {
+    from {
+        opacity: 1;
+        transform: translateX( 0 );
+    }
+    100% {
+        opacity: 0;
+        transform: translateX( -100% );
+    }
+}
+@keyframes count {
+    0% {
+        width: 100%;
+        background: #03a9f4;
+    }
+    70% {
+        background: #03a9f4;
+    }
+    80% {
+        background: #f44336;
+    }
+    100% {
+        width: 0%;
+        background: #f44336;
+    }
+}
+@keyframes correct {
+    from {
+        transform: translateY( -32px );
+    }
+    to {
+        opacity: 1;
+        transform: translateY( 0 );
+    }
+}
+@keyframes shake {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    6.5% {
+        transform: translateX(-6px);
+    }
+    16.5% {
+        transform: translateX(5px);
+    }
+    31.5% {
+        transform: translateX(-3px);
+    }
+    43.5% {
+        transform: translateX(2px);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX( 0 );
+    }
+}
